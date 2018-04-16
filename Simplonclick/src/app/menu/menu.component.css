@@ -1,0 +1,18 @@
+.resize {
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 93px;
+    position: relative;
+    left: 3em;
+    top: 2em;
+}
+
+.color {
+    background-color: black;
+    color: white;
+}
+
+.black {
+    background-color: black;
+}

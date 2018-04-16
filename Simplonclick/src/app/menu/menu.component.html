@@ -1,0 +1,20 @@
+<div>
+  <img src="../assets/simplon-logo.png" alt="Menu" class="resize">  
+</div>
+
+<div class="mat-display-1" fxLayoutAlign="center">
+  <h6>Menu</h6>
+</div>
+
+<mat-nav-list>
+  <mat-list>
+    <mat-list-item routerLinkActive="active" routerLink="/accueil" (click)="sideNavService.toggleNav()" >Accueil</mat-list-item>
+    <mat-list-item routerLinkActive="active" routerLink="/objectif" (click)="sideNavService.toggleNav()">Objectif</mat-list-item>
+    <mat-list-item routerLinkActive="active" routerLink="/categorie-savoir" (click)="sideNavService.toggleNav()">Liste des sujets</mat-list-item>
+    <mat-list-item routerLinkActive="active" routerLink="/" (click)="sideNavService.toggleNav()">Se déconnecter</mat-list-item>
+    <mat-list-item routerLinkActive="active" routerLink="/membres" (click)="sideNavService.toggleNav()">Liste des membres</mat-list-item>
+    <mat-list-item routerLinkActive="active" routerLink="/savoirs" (click)="sideNavService.toggleNav()">Liste des savoirs</mat-list-item>
+    <mat-list-item routerLinkActive="active" routerLink="/ressources" (click)="sideNavService.toggleNav()">Liste des ressources</mat-list-item>
+    <mat-list-item routerLinkActive="active" routerLink="/" (click)="sideNavService.toggleNav()">Supprimer ce compte</mat-list-item>
+  </mat-list>
+</mat-nav-list>
