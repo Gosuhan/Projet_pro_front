@@ -9,3 +9,18 @@ li {
 .white {
     color: white;
 }
+
+.aCliquable {
+    cursor: pointer;
+}
+
+.black {
+    background-color: #000000;
+}
+
+.resize {
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 39px;
+}

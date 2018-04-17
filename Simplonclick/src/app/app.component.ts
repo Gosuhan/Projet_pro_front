@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import {SidenavService} from './sidenav.service';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +7,17 @@ import {SidenavService} from './sidenav.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('sideNav') public sideNav;
+
   title = 'Simplon\'click';
 
-  constructor (public sideNavService: SidenavService) {
+  constructor (public appService: AppService) {
 
   }
 
   ngOnInit() {
-    this.sideNavService.sideNav = this.sideNav;
+  }
+
+  selectMenu(menu) {
+    this.appService.selectedMenu = menu;
   }
 }

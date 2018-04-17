@@ -42,7 +42,8 @@ import { ObjectifComponent } from './objectif/objectif.component';
 import { CategorieSavoirComponent } from './categorie-savoir/categorie-savoir.component';
 import { SavoirComponent } from './savoir/savoir.component';
 import { MembreComponent } from './membre/membre.component';
-import { SidenavService } from './sidenav.service';
+import { HeaderComponent } from './header/header.component';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { SidenavService } from './sidenav.service';
     ObjectifComponent,
     CategorieSavoirComponent,
     SavoirComponent,
-    MembreComponent
+    MembreComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +91,7 @@ import { SidenavService } from './sidenav.service';
     HttpClientModule
   ],
   providers: [
-    SidenavService
+    AppService
   ],
   bootstrap: [AppComponent]
 })
