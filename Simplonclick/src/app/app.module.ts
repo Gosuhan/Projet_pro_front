@@ -1,7 +1,10 @@
+import { ApiService } from './api.service';
+import { MembreService } from './membre.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -62,7 +65,8 @@ import { AppService } from './app.service';
     CategorieSavoirComponent,
     SavoirComponent,
     MembreComponent,
-    HeaderComponent
+    HeaderComponent,
+    MembreListComponent
   ],
   imports: [
     BrowserModule,
@@ -88,10 +92,13 @@ import { AppService } from './app.service';
     MatSlideToggleModule,
     MatTooltipModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [
-    AppService
+    AppService,
+    MembreService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

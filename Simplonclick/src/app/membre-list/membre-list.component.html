@@ -1,3 +1,137 @@
-<p>
-  membre-list works!
-</p>
+<div>
+    <div>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+      </mat-form-field>
+    </div>
+  
+    <mat-table #table [dataSource]="dataSourceMembre" matSort>
+  
+      <!-- Pseudo Column -->
+      <ng-container matColumnDef="pseudo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Pseudo </mat-header-cell>
+          <mat-cell *matCellDef="let membre"> {{membre.pseudo}} </mat-cell>
+      </ng-container>
+
+      <!-- Nom Column -->
+      <ng-container matColumnDef="nom">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+        <mat-cell *matCellDef="let membre"> {{membre.nom}} </mat-cell>
+      </ng-container>
+
+      <!-- Prenom Column -->
+      <ng-container matColumnDef="prenom">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </mat-header-cell>
+          <mat-cell *matCellDef="let membre"> {{membre.prenom}} </mat-cell>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </mat-header-cell>
+          <mat-cell *matCellDef="let membre"> {{membre.email}} </mat-cell>
+      </ng-container>
+
+      <!-- Pseudo_Slack Column -->
+      <ng-container matColumnDef="pseudo_slack">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Pseudo du Slack </mat-header-cell>
+          <mat-cell *matCellDef="let membre"> {{membre.pseudo_slack}} </mat-cell>
+      </ng-container>
+
+      <!-- Fonction Column -->
+      <ng-container matColumnDef="fonction">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Fonction </mat-header-cell>
+          <mat-cell *matCellDef="let membre"> {{membre.fonction}} </mat-cell>
+      </ng-container>
+
+      <!-- Niveau_general Column -->
+      <ng-container matColumnDef="niveau_general">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau Général </mat-header-cell>
+          <mat-cell *matCellDef="let membre"> {{membre.niveau_general}} </mat-cell>
+      </ng-container>
+
+      <!-- Disponibilite_habituelle Column -->
+      <ng-container matColumnDef="disponibilite_habituelle">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Disponibilité habituelle </mat-header-cell>
+          <mat-cell *matCellDef="let membre"> {{membre.disponibilite_habituelle}} </mat-cell>
+      </ng-container>
+
+      <!-- Disponibilite_actuelle Column -->
+      <ng-container matColumnDef="disponibilite_actuelle">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Disponibilité actuelle </mat-header-cell>
+          <mat-cell *matCellDef="let membre"> {{membre.disponibilite_actuelle ? 'Disponible' : 'Non disponible'}} </mat-cell>
+      </ng-container>
+
+      <!-- Admin Column -->
+      <ng-container matColumnDef="admin">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Administrateur </mat-header-cell>
+          <mat-cell *matCellDef="let membre" class="textaligncenter"> {{membre.admin ? 'X' : ''}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_membre}" (click)="highlight(row)"></mat-row>
+    </mat-table>
+  </div>
+  <br>
+  <form #membreForm="ngForm" (ngSubmit)="onSubmit(membreForm)">
+    <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Pseudo" name="pseudo" [(ngModel)]="memb.pseudo">
+    </mat-form-field>
+  
+    <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Nom" required name="nom" [(ngModel)]="memb.nom">
+    </mat-form-field>
+  
+    <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Prénom" required name="prenom" [(ngModel)]="memb.prenom">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="E-mail" required name="email" [(ngModel)]="memb.email">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Pseudo du slack" name="pseudo_slack" [(ngModel)]="memb.pseudo_slack">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Fonction" name="fonction" [(ngModel)]="memb.fonction">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Niveau général" name="niveau_general" [(ngModel)]="memb.niveau_general">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Disponibilité habituelle" name="disponibilite_habituelle" [(ngModel)]="memb.disponibilite_habituelle">
+    </mat-form-field>
+
+    <!-- <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Disponibilité actuelle" name="disponibilite_actuelle" [(ngModel)]="memb.disponibilite_actuelle">
+    </mat-form-field> -->
+  
+    <br>
+    <mat-slide-toggle name="disponibilite_actuelle" [(ngModel)]="memb.disponibilite_actuelle">{{memb.disponibilite_actuelle ? 'Disponible' : 'Non disponible'}}</mat-slide-toggle>
+  
+    <br>
+    <br>
+    <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Est Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
+
+    <br>
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!membreForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+  </form>
+  <br>
+  <button mat-raised-button (click)="cancelSelect()">Annuler</button>
+  
+  <br>
+  <br>
+  <button mat-raised-button (click)="deleteMembre()">Supprimer ce compte</button>
+  <br>
