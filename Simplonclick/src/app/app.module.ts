@@ -1,3 +1,4 @@
+import { SavoirService } from './savoir.service';
 import { ApiService } from './api.service';
 import { MembreService } from './membre.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -98,7 +99,8 @@ import { AppService } from './app.service';
   providers: [
     AppService,
     MembreService,
-    ApiService
+    ApiService,
+    SavoirService
   ],
   bootstrap: [AppComponent]
 })

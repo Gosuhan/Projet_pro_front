@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
+import { Isavoir } from './isavoir';
 
 @Injectable()
 export class ApiService {
@@ -32,6 +33,28 @@ export class ApiService {
 
   deleteMembre(id) {
     return this.http.delete<any>(`${this.URL}/membre/${id}`);
+  }
+
+  getSavoirs() {
+    return this.http.get<Isavoir[]>(`${this.URL}/savoirs`);
+  }
+
+  getSavoir(id) {
+    return this.http.get<Isavoir>(`${this.URL}/savoir/${id}`);
+  }
+
+  updateSavoir(id, savoir: Isavoir) {
+    return this.http.put<Isavoir>(`${this.URL}/savoir/${id}`, savoir);
+  }
+
+  addSavoir(savoir: Isavoir) {
+    if (savoir.id_savoir == null) {
+      return this.http.post<Isavoir>(`${this.URL}/savoirs`, savoir);
+    }
+  }
+
+  deleteSavoir(id) {
+    return this.http.delete<any>(`${this.URL}/savoir/${id}`);
   }
 
 }

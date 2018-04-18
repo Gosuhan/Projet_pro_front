@@ -16,15 +16,14 @@ import { MembreService } from '../membre.service';
   styleUrls: ['./membre-list.component.css']
 })
 export class MembreListComponent implements OnInit {
-  panelOpenState = false;
   memb: Imembre;
   selectedRowIndex = -1;
   edition = false;
 
   constructor(private membreService: MembreService) {}
 
-  displayedColumns = ['pseudo', 'nom', 'prenom', 'email', 'pseudo_slack', /*'image',*/ 'fonction', 'niveau_general',
-  'disponibilite_habituelle', 'disponibilite_actuelle', 'admin'];
+  displayedColumns = [/*'pseudo',*/ 'nom', 'prenom'/*, 'email', 'pseudo_slack', 'image'*/, 'fonction'/*, 'niveau_general',
+  'disponibilite_habituelle', 'disponibilite_actuelle', 'admin'*/];
   dataSourceMembre = new MatTableDataSource();
 
   @ViewChild(MatSort) sort: MatSort;

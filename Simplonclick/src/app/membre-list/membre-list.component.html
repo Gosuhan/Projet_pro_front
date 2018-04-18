@@ -8,10 +8,10 @@
     <mat-table #table [dataSource]="dataSourceMembre" matSort>
   
       <!-- Pseudo Column -->
-      <ng-container matColumnDef="pseudo">
+      <!-- <ng-container matColumnDef="pseudo">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Pseudo </mat-header-cell>
           <mat-cell *matCellDef="let membre"> {{membre.pseudo}} </mat-cell>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Nom Column -->
       <ng-container matColumnDef="nom">
@@ -26,16 +26,16 @@
       </ng-container>
 
       <!-- Email Column -->
-      <ng-container matColumnDef="email">
+      <!-- <ng-container matColumnDef="email">
           <mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </mat-header-cell>
           <mat-cell *matCellDef="let membre"> {{membre.email}} </mat-cell>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Pseudo_Slack Column -->
-      <ng-container matColumnDef="pseudo_slack">
+      <!-- <ng-container matColumnDef="pseudo_slack">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Pseudo du Slack </mat-header-cell>
           <mat-cell *matCellDef="let membre"> {{membre.pseudo_slack}} </mat-cell>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Fonction Column -->
       <ng-container matColumnDef="fonction">
@@ -50,28 +50,37 @@
       </ng-container>
 
       <!-- Disponibilite_habituelle Column -->
-      <ng-container matColumnDef="disponibilite_habituelle">
+      <!-- <ng-container matColumnDef="disponibilite_habituelle">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Disponibilité habituelle </mat-header-cell>
           <mat-cell *matCellDef="let membre"> {{membre.disponibilite_habituelle}} </mat-cell>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Disponibilite_actuelle Column -->
-      <ng-container matColumnDef="disponibilite_actuelle">
+      <!-- <ng-container matColumnDef="disponibilite_actuelle">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Disponibilité actuelle </mat-header-cell>
           <mat-cell *matCellDef="let membre"> {{membre.disponibilite_actuelle ? 'Disponible' : 'Non disponible'}} </mat-cell>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Admin Column -->
-      <ng-container matColumnDef="admin">
+      <!-- <ng-container matColumnDef="admin">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Administrateur </mat-header-cell>
-          <mat-cell *matCellDef="let membre" class="textaligncenter"> {{membre.admin ? 'X' : ''}} </mat-cell>
-      </ng-container>
+          <mat-cell *matCellDef="let membre"> {{membre.admin ? 'X' : ''}} </mat-cell>
+      </ng-container> -->
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_membre}" (click)="highlight(row)"></mat-row>
     </mat-table>
   </div>
-  <br>
+
+    <br>
+    <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
+    
+    <br>
+    <br>
+    <mat-slide-toggle name="disponibilite_actuelle" [(ngModel)]="memb.disponibilite_actuelle">{{memb.disponibilite_actuelle ? 'Disponible' : 'Non disponible'}}</mat-slide-toggle>
+
+    <br>
+    <br>
   <form #membreForm="ngForm" (ngSubmit)="onSubmit(membreForm)">
     <mat-form-field class="inputFullWidth">
       <input matInput placeholder="Pseudo" name="pseudo" [(ngModel)]="memb.pseudo">
@@ -117,13 +126,6 @@
         <input matInput placeholder="Disponibilité actuelle" name="disponibilite_actuelle" [(ngModel)]="memb.disponibilite_actuelle">
     </mat-form-field> -->
   
-    <br>
-    <mat-slide-toggle name="disponibilite_actuelle" [(ngModel)]="memb.disponibilite_actuelle">{{memb.disponibilite_actuelle ? 'Disponible' : 'Non disponible'}}</mat-slide-toggle>
-  
-    <br>
-    <br>
-    <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Est Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
-
     <br>
     <br>
     <button mat-raised-button color="primary" type="submit" [disabled]="!membreForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>

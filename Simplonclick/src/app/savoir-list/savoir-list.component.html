@@ -1,3 +1,40 @@
-<p>
-  savoir-list works!
-</p>
+<div>
+  <div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSourceSavoir" matSort>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nom_savoir">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let savoir"> {{savoir.nom_savoir}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_savoir}" (click)="highlight(row)"></mat-row>
+  </mat-table>
+</div>
+
+  <br>
+  <br>
+<form #savoirForm="ngForm" (ngSubmit)="onSubmit(savoirForm)">
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Nom" required name="nom_savoir" [(ngModel)]="sav.nom_savoir">
+  </mat-form-field>
+
+  <br>
+  <br>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!savoirForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+</form>
+<br>
+<button mat-raised-button (click)="cancelSelect()">Annuler</button>
+
+<br>
+<br>
+<button mat-raised-button (click)="deleteSavoir()">Supprimer ce compte</button>
+<br>
