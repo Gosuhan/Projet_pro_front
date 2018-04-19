@@ -41,13 +41,20 @@ export class RessourceDuSavoirComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // delierDuSavoir(idRessource) {
-  //   let idAffaireEtArme: Iobjetsaffaire = {
-  //     idAffaire: this.affaire.id_affaire,
-  //     idObjet: idArme
-  //   };
-  //   this.armeService.supprArmeAffaire(idAffaireEtArme).subscribe(succes=>this.refreshList());
-  // }
+  delRessourceSavoir(idRessource, nomRessource, urlRessource, idSavoirRessource) {
+    const savoir: Isavoir = {
+      id_savoir: this.savoir.id_savoir,
+      nom_savoir: this.savoir.nom_savoir,
+      categorie_savoir_id_categorie_savoir: this.savoir.categorie_savoir_id_categorie_savoir
+    };
+    const ressource: Iressource = {
+      id_ressource: idRessource,
+      nom_ressource: nomRessource,
+      url: urlRessource,
+      savoir_id_savoir: idSavoirRessource
+    };
+    this.ressourceService.deleteRessourceSavoir(savoir, ressource).subscribe(succes => this.refreshList());
+  }
 
   test() {
     if (this.ressources.length > 0) {

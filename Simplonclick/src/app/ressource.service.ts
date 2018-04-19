@@ -46,9 +46,9 @@ export class RessourceService {
     return this.api.addRessourceSavoir(savoir.id_savoir, ressource.id_ressource, ressource) as Observable<Iressource>;
   }
 
-  // deleteRessourceSavoir(idRessourceSavoir): Observable<Iressource> {
-  //   return this.api.deleteRessourceSavoir(idRessourceSavoir) as Observable<Iressource>;
-  // }
+  deleteRessourceSavoir(savoir: Isavoir, ressource: Iressource): Observable<Iressource> {
+    return this.api.deleteRessourceSavoir(savoir.id_savoir, ressource.id_ressource, ressource) as Observable<Iressource>;
+  }
 
   getRessourcesSavoir(id): Observable<Iressource[]> {
     return this.api.getRessourcesSavoir(id) as Observable<Iressource[]>;
