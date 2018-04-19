@@ -76,7 +76,8 @@ export class RessourceAuSavoirComponent implements OnInit {
     };
     this.ressourceService.addRessourceSavoir(this.savoir, this.ressource).subscribe(
       result => {this.afficherMessage('Enregistrement effectué', ''); },
-      error => {this.afficherMessage('', 'Ressource déjà présente dans ce savoir'); },
+      error => {this.afficherMessage('', 'Ressource déjà présente dans ce savoir'); }, // Ne fonctionne pas car
+      // ce n'est pas une création mais une modification (donc aucune erreur). A voir
     );
   }
 
