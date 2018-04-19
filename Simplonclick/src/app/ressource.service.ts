@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { tap } from 'rxjs/operators';
 import { Iressource } from './iressource';
+import { Isavoir } from './isavoir';
 
 @Injectable()
 export class RessourceService {
@@ -41,8 +42,8 @@ export class RessourceService {
     return this.api.searchRessources(recherche) as Observable<Iressource[]>;
   }
 
-  addRessourceSavoir(idSavoir, idRessource): Observable<Iressource> {
-    return this.api.addRessourceSavoir(idSavoir.id_savoir, idRessource.id_ressource) as Observable<Iressource>;
+  addRessourceSavoir(savoir: Isavoir, ressource: Iressource): Observable<Iressource> {
+    return this.api.addRessourceSavoir(savoir.id_savoir, ressource.id_ressource, ressource) as Observable<Iressource>;
   }
 
   // deleteRessourceSavoir(idRessourceSavoir): Observable<Iressource> {

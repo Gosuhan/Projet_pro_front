@@ -84,9 +84,9 @@ export class ApiService {
     return this.http.get<Iressource[]>(`${this.URL}/ressources/${recherche}`);
   }
 
-  addRessourceSavoir(idSavoir: Isavoir, idRessource: Iressource) {
-    return this.http.put<Iressource>(`${this.URL}/savoir/${idSavoir.id_savoir}/
-    addressource/${idRessource.id_ressource}`, idRessource);
+  addRessourceSavoir(idSavoir, idRessource, ressource: Iressource) {
+    return this.http.put<Iressource>(`${this.URL}/savoir/${idSavoir}/
+    addressource/${idRessource}`, ressource);
   }
 
   // deleteRessourceSavoir(idRessourceSavoir: Iressource) {

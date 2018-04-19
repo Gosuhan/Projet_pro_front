@@ -63,18 +63,18 @@ export class RessourceAuSavoirComponent implements OnInit {
   addRessourceToSavoir() {
     this.selectedRessource = false;
     this.selectedRowIndex = -1;
-    const idSavoir: Isavoir = {
+    const savoir: Isavoir = {
       id_savoir: this.savoir.id_savoir,
       nom_savoir: this.savoir.nom_savoir,
       categorie_savoir_id_categorie_savoir: this.savoir.categorie_savoir_id_categorie_savoir
     };
-    const idRessource: Iressource = {
+    const ressource: Iressource = {
       id_ressource: this.ressource.id_ressource,
       nom_ressource: this.ressource.nom_ressource,
       url: this.ressource.url,
       savoir_id_savoir: this.savoir.id_savoir // ???
     };
-    this.ressourceService.addRessourceSavoir(idSavoir.id_savoir, idRessource.id_ressource).subscribe(
+    this.ressourceService.addRessourceSavoir(this.savoir, this.ressource).subscribe(
       result => {this.afficherMessage('Enregistrement effectué', ''); },
       error => {this.afficherMessage('', 'Ressource déjà présente dans ce savoir'); },
     );

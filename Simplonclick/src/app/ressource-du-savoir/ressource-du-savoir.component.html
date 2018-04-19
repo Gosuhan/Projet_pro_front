@@ -7,7 +7,7 @@
 <mat-dialog-content>
   <mat-list *ngFor="let ressource of ressources">
     <mat-list-item>
-      <div>{{ressource.nom_ressource}} | {{ressource.url}}</div>
+      <div>{{ressource.nom_ressource}} : {{ressource.url}}</div>
       <button class="mat-button" matTooltip="Ne plus lier cette ressource à cette affaire." matTooltipPosition="right" (click)="delierDuSavoir(ressource.id)"><mat-icon>delete</mat-icon></button>
     </mat-list-item>
   </mat-list>
