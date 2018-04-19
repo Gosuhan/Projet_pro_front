@@ -1,3 +1,4 @@
+import { RessourceService } from './ressource.service';
 import { SavoirService } from './savoir.service';
 import { ApiService } from './api.service';
 import { MembreService } from './membre.service';
@@ -48,6 +49,8 @@ import { SavoirComponent } from './savoir/savoir.component';
 import { MembreComponent } from './membre/membre.component';
 import { HeaderComponent } from './header/header.component';
 import { AppService } from './app.service';
+import { RessourceAuSavoirComponent } from './ressource-au-savoir/ressource-au-savoir.component';
+import { RessourceDuSavoirComponent } from './ressource-du-savoir/ressource-du-savoir.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,9 @@ import { AppService } from './app.service';
     SavoirComponent,
     MembreComponent,
     HeaderComponent,
-    MembreListComponent
+    MembreListComponent,
+    RessourceAuSavoirComponent,
+    RessourceDuSavoirComponent
   ],
   imports: [
     BrowserModule,
@@ -100,8 +105,13 @@ import { AppService } from './app.service';
     AppService,
     MembreService,
     ApiService,
-    SavoirService
+    SavoirService,
+    RessourceService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    RessourceAuSavoirComponent,
+    RessourceDuSavoirComponent
+  ]
 })
 export class AppModule { }

@@ -31,10 +31,17 @@
   <br>
   <button mat-raised-button color="primary" type="submit" [disabled]="!savoirForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
 </form>
-<br>
-<button mat-raised-button (click)="cancelSelect()">Annuler</button>
 
-<br>
-<br>
-<button mat-raised-button (click)="deleteSavoir()">Supprimer ce compte</button>
-<br>
+<div *ngIf="edition">
+  <br>
+  <button mat-raised-button (click)="ajouterRessourceAuSavoir()">Ajouter une ressource à ce Savoir</button>
+  <button class="mat-raised-button mat-primary" (click)="ressourcesDuSavoir()">Ressources enregistrées</button>
+  <br>
+
+  <br>
+  <button mat-raised-button (click)="cancelSelect()">Annuler</button>
+
+  <br>
+  <br>
+  <button mat-raised-button (click)="deleteSavoir()">Supprimer ce savoir</button>
+  <br>

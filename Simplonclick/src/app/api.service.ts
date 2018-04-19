@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { Isavoir } from './isavoir';
+import { Iressource } from './iressource';
 
 @Injectable()
 export class ApiService {
@@ -55,6 +56,46 @@ export class ApiService {
 
   deleteSavoir(id) {
     return this.http.delete<any>(`${this.URL}/savoir/${id}`);
+  }
+
+  getRessources() {
+    return this.http.get<Iressource[]>(`${this.URL}/ressources`);
+  }
+
+  getRessource(id) {
+    return this.http.get<Iressource>(`${this.URL}/ressource/${id}`);
+  }
+
+  updateRessource(id, ressource: Iressource) {
+    return this.http.put<Iressource>(`${this.URL}/ressource/${id}`, ressource);
+  }
+
+  addRessource(ressource: Iressource) {
+    if (ressource.id_ressource == null) {
+      return this.http.post<Iressource>(`${this.URL}/ressources`, ressource);
+    }
+  }
+
+  deleteRessource(id) {
+    return this.http.delete<any>(`${this.URL}/ressource/${id}`);
+  }
+
+  searchRessources(recherche) {
+    return this.http.get<Iressource[]>(`${this.URL}/ressources/${recherche}`);
+  }
+
+  addRessourceSavoir(idSavoir: Isavoir, idRessource: Iressource) {
+    return this.http.put<Iressource>(`${this.URL}/savoir/${idSavoir.id_savoir}/
+    addressource/${idRessource.id_ressource}`, idRessource);
+  }
+
+  // deleteRessourceSavoir(idRessourceSavoir: Iressource) {
+  //   return this.http.delete<any>(`${this.URL}/savoir/${idRessourceSavoir.savoir_id_savoir}/
+  //   deleteRessource/${idRessourceSavoir.id_ressource}`);
+  // }
+
+  getRessourcesSavoir(id) {
+    return this.http.get<Iressource[]>(`${this.URL}/savoir/${id}/ressources`);
   }
 
 }

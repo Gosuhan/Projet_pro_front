@@ -1,3 +1,51 @@
-<p>
-  ressource-list works!
-</p>
+<div>
+  <div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSourceRessource" matSort>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nom_ressource">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let ressource"> {{ressource.nom_ressource}} </mat-cell>
+    </ng-container>
+
+    <!-- URL Column -->
+    <ng-container matColumnDef="url">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lien </mat-header-cell>
+      <mat-cell *matCellDef="let ressource"> {{ressource.url}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_ressource}" (click)="highlight(row)"></mat-row>
+  </mat-table>
+</div>
+
+  <br>
+  <br>
+<form #ressourceForm="ngForm" (ngSubmit)="onSubmit(ressourceForm)">
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Nom" required name="nom_ressource" [(ngModel)]="ress.nom_ressource">
+  </mat-form-field>
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Lien" required name="url" [(ngModel)]="ress.url">
+  </mat-form-field>
+
+  <br>
+  <br>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!ressourceForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+</form>
+<br>
+<button mat-raised-button (click)="cancelSelect()">Annuler</button>
+
+<br>
+<br>
+<button mat-raised-button (click)="deleteRessource()">Supprimer cette ressource</button>
+<br>

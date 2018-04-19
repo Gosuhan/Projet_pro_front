@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import {
+  MatTableDataSource,
+  MatDialog,
+  MatDialogConfig,
+  MatSort
+} from '@angular/material';
+
+import { Subscription } from 'rxjs/Subscription';
+import { RessourceService } from '../ressource.service';
+import { Iressource } from '../iressource';
 
 @Component({
   selector: 'app-ressource-list',
@@ -6,10 +16,84 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ressource-list.component.css']
 })
 export class RessourceListComponent implements OnInit {
+  ress: Iressource;
+  selectedRowIndex = -1;
+  edition = false;
 
-  constructor() { }
+  constructor(private ressourceService: RessourceService) {}
+
+  displayedColumns = ['nom_ressource', 'url'];
+  dataSourceRessource = new MatTableDataSource();
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSourceRessource.filter = filterValue;
+  }
 
   ngOnInit() {
+    this.ress = {
+      id_ressource: null,
+      nom_ressource: '',
+      url: '',
+      savoir_id_savoir: null
+    };
+
+    this.refreshTab();
+
+    this.ressourceService.update$.subscribe(() => this.refreshTab());
+  }
+
+  refreshTab() {
+    this.ressourceService
+      .getRessources()
+      .subscribe((data: Iressource[]) => {
+        this.dataSourceRessource = new MatTableDataSource(data);
+        this.dataSourceRessource.sort = this.sort;
+      });
+  }
+
+  highlight(row) {
+    this.selectedRowIndex = row.id_ressource;
+    this.ress = Object.assign({}, row);
+    this.edition = true;
+  }
+
+  cancelSelect() {
+    this.selectedRowIndex = -1;
+    this.edition = false;
+    this.clearInput();
+  }
+
+  onSubmit() {
+    if (this.edition) {
+      this.ressourceService
+        .updateRessource(this.ress)
+        .subscribe();
+    } else {
+      this.ressourceService
+        .addRessource(this.ress)
+        .subscribe();
+    }
+  }
+
+  deleteRessource() {
+    this.edition = false;
+    this.ressourceService
+      .deleteRessource(this.ress.id_ressource)
+      .subscribe();
+    this.clearInput();
+  }
+
+  clearInput() {
+    this.ress = {
+      id_ressource: null,
+      nom_ressource: '',
+      url: '',
+      savoir_id_savoir: null
+    };
   }
 
 }

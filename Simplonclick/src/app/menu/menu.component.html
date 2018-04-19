@@ -5,6 +5,7 @@
   <button mat-menu-item [style.color]="appService.selectedMenu == 'objectif' ? 'red' : 'black'" (click)="selectMenu('objectif')" routerLink="/objectif"><mat-icon>timeline</mat-icon>Objectif</button>
   <button mat-menu-item [style.color]="appService.selectedMenu == 'categorie-savoir' ? 'red' : 'black'" (click)="selectMenu('categorie-savoir')" routerLink="/categorie-savoir"><mat-icon>description</mat-icon>Liste des sujets</button>
   <button mat-menu-item [style.color]="appService.selectedMenu == 'membres' ? 'red' : 'black'" (click)="selectMenu('membres')" routerLink="/membres"><mat-icon>people</mat-icon>Liste des membres</button>
+  <button mat-menu-item [style.color]="appService.selectedMenu == 'categories-savoir' ? 'red' : 'black'" (click)="selectMenu('categories-savoir')" routerLink="/categories-savoir"><mat-icon>list</mat-icon>Liste des catégories</button>
   <button mat-menu-item [style.color]="appService.selectedMenu == 'savoirs' ? 'red' : 'black'" (click)="selectMenu('savoirs')" routerLink="/savoirs"><mat-icon>list</mat-icon>Liste des savoirs</button>
   <button mat-menu-item [style.color]="appService.selectedMenu == 'ressources' ? 'red' : 'black'" (click)="selectMenu('ressources')" routerLink="/ressources"><mat-icon>list</mat-icon>Liste des ressources</button>
   <button mat-menu-item [style.color]="appService.selectedMenu == 'deleteAccount' ? 'red' : 'black'" (click)="selectMenu('deleteAccount')"routerLink="/accueil"><mat-icon>delete_forever</mat-icon>Supprimer ce compte</button>
