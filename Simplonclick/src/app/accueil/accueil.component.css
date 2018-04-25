@@ -1,0 +1,15 @@
+.highlight {
+    background: #E80041;
+  }
+
+  .background {
+    background-color: #e3e2d5;
+  }
+
+  img {
+    position: absolute;
+    left: 60px;
+    top: 5px;
+	  width: 70px;
+    height: auto;
+}
