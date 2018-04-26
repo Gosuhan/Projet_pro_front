@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Ajoutez un savoir à cette catégorie</h2>
+
+<mat-dialog-content>
+
+  <div>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Recherche" name="recherche" #recherche>
+    </mat-form-field>
+    <button mat-raised-button (click)="rechercher(recherche.value)"><mat-icon>search</mat-icon></button>
+  </div>
+
+  <div *ngIf="dataSourceSavoirs.data.length>0">
+    <div class="filtreTableSavoirs">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+      </mat-form-field>
+    </div>
+
+    <mat-table class="filtreTableSavoirs" #table [dataSource]="dataSourceSavoirs" matSort>
+
+      <!-- Nom Column -->
+      <ng-container matColumnDef="nom_savoir">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+        <mat-cell *matCellDef="let savoir"> {{savoir.nom_savoir}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_savoir}" (click)="highlight(row)"></mat-row>
+    </mat-table>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-primary" [disabled]="!selectedSavoir" (click)="addSavoirToCategorieSavoir()">Ajouter</button>
+  <button class="mat-raised-button" (click)="closeDial()">Fermer</button>
+</mat-dialog-actions>

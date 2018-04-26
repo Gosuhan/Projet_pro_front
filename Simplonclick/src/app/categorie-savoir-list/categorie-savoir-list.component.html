@@ -1,3 +1,48 @@
-<p>
-  categorie-savoir-list works!
-</p>
+<div>
+    <div>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+      </mat-form-field>
+    </div>
+  
+    <mat-table #table [dataSource]="dataSourceCategorieSavoir" matSort>
+  
+      <!-- Nom Column -->
+      <ng-container matColumnDef="nom_categorie_savoir">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+        <mat-cell *matCellDef="let categorieSavoir"> {{categorieSavoir.nom_categorie_savoir}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_categorie_savoir}" (click)="highlight(row)"></mat-row>
+    </mat-table>
+  </div>
+  
+    <br>
+    <br>
+  <form #categorieSavoirForm="ngForm" (ngSubmit)="onSubmit(categorieSavoirForm)">
+  
+    <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Nom" required name="nom_categorie_savoir" [(ngModel)]="catsav.nom_categorie_savoir">
+    </mat-form-field>
+  
+    <br>
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!categorieSavoirForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+  </form>
+  
+  <div *ngIf="edition">
+    <br>
+    <button mat-raised-button (click)="ajouterSavoiraCategorieSavoir()">Ajouter un savoir à cette Catégorie</button>
+    <button class="mat-raised-button mat-primary" (click)="savoirsDeCategorieSavoir()">Savoirs enregistrés</button>
+    <br>
+  
+    <br>
+    <button mat-raised-button (click)="cancelSelect()">Annuler</button>
+  
+    <br>
+    <br>
+    <button mat-raised-button class="buttonColorBlack" (click)="deleteCategorieSavoir()">Supprimer cette Categorie</button>
+    <br>
+  </div>

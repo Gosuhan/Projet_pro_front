@@ -42,10 +42,13 @@
   <br>
   <button mat-raised-button color="primary" type="submit" [disabled]="!ressourceForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
 </form>
+
+<div *ngIf="edition">
 <br>
 <button mat-raised-button (click)="cancelSelect()">Annuler</button>
 
 <br>
 <br>
-<button mat-raised-button (click)="deleteRessource()">Supprimer cette ressource</button>
+<button mat-raised-button class="buttonColorBlack" (click)="deleteRessource()">Supprimer cette ressource</button>
 <br>
+</div>

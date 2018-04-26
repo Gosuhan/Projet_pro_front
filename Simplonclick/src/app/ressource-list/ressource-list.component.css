@@ -2,3 +2,8 @@
     background: #E80041;
     overflow: visible;
   }
+
+.buttonColorBlack {
+    background: black;
+    color: white;
+  }

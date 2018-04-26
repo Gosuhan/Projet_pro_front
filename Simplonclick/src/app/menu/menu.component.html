@@ -2,7 +2,7 @@
   <mat-icon><i>view_headline</i></mat-icon>
   <mat-menu #menu="matMenu">
   <button mat-menu-item [style.color]="appService.selectedMenu == 'accueil' ? 'red' : 'black'" (click)="selectMenu('accueil')"routerLink="/accueil"><mat-icon>home</mat-icon>Accueil</button>
-  <button mat-menu-item [style.color]="appService.selectedMenu == 'objectif' ? 'red' : 'black'" (click)="selectMenu('membre/1')" routerLink="/membre/1"><mat-icon>timeline</mat-icon>Objectif</button>
+  <button mat-menu-item [style.color]="appService.selectedMenu == 'objectif' ? 'red' : 'black'" (click)="selectMenu('objectif')" routerLink="/membre/1"><mat-icon>timeline</mat-icon>Objectif</button>
   <button mat-menu-item [style.color]="appService.selectedMenu == 'categorie-savoir' ? 'red' : 'black'" (click)="selectMenu('categorie-savoir')" routerLink="/categorie-savoir"><mat-icon>description</mat-icon>Liste des sujets</button>
   <button mat-menu-item [style.color]="appService.selectedMenu == 'membres' ? 'red' : 'black'" (click)="selectMenu('membres')" routerLink="/membres"><mat-icon>people</mat-icon>Liste des membres</button>
   <button mat-menu-item [style.color]="appService.selectedMenu == 'categories-savoir' ? 'red' : 'black'" (click)="selectMenu('categories-savoir')" routerLink="/categories-savoir"><mat-icon>list</mat-icon>Liste des catégories</button>

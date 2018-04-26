@@ -51,6 +51,9 @@ import { HeaderComponent } from './header/header.component';
 import { AppService } from './app.service';
 import { RessourceAuSavoirComponent } from './ressource-au-savoir/ressource-au-savoir.component';
 import { RessourceDuSavoirComponent } from './ressource-du-savoir/ressource-du-savoir.component';
+import { SavoirDeCategorieSavoirComponent } from './savoir-de-categorie-savoir/savoir-de-categorie-savoir.component';
+import { SavoiraCategorieSavoirComponent } from './savoira-categorie-savoir/savoira-categorie-savoir.component';
+import { CategorieSavoirService } from './categorie-savoir.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,9 @@ import { RessourceDuSavoirComponent } from './ressource-du-savoir/ressource-du-s
     HeaderComponent,
     MembreListComponent,
     RessourceAuSavoirComponent,
-    RessourceDuSavoirComponent
+    RessourceDuSavoirComponent,
+    SavoirDeCategorieSavoirComponent,
+    SavoiraCategorieSavoirComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,12 +111,15 @@ import { RessourceDuSavoirComponent } from './ressource-du-savoir/ressource-du-s
     MembreService,
     ApiService,
     SavoirService,
-    RessourceService
+    RessourceService,
+    CategorieSavoirService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     RessourceAuSavoirComponent,
-    RessourceDuSavoirComponent
+    RessourceDuSavoirComponent,
+    SavoirDeCategorieSavoirComponent,
+    SavoiraCategorieSavoirComponent
   ]
 })
 export class AppModule { }

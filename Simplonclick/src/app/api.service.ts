@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
+import { IcategorieSavoir } from './icategorie-savoir';
 import { Isavoir } from './isavoir';
 import { Iressource } from './iressource';
 
@@ -34,6 +35,28 @@ export class ApiService {
 
   deleteMembre(id) {
     return this.http.delete<any>(`${this.URL}/membre/${id}`);
+  }
+
+  getCategoriesSavoir() {
+    return this.http.get<IcategorieSavoir[]>(`${this.URL}/categories-savoir`);
+  }
+
+  getCategorieSavoir(id) {
+    return this.http.get<IcategorieSavoir>(`${this.URL}/categorie-savoir/${id}`);
+  }
+
+  updateCategorieSavoir(id, categorieSavoir: IcategorieSavoir) {
+    return this.http.put<IcategorieSavoir>(`${this.URL}/categorie-savoir/${id}`, categorieSavoir);
+  }
+
+  addCategorieSavoir(categorieSavoir: IcategorieSavoir) {
+    if (categorieSavoir.id_categorie_savoir == null) {
+      return this.http.post<IcategorieSavoir>(`${this.URL}/categories-savoir`, categorieSavoir);
+    }
+  }
+
+  deleteCategorieSavoir(id) {
+    return this.http.delete<any>(`${this.URL}/categorie-savoir/${id}`);
   }
 
   getSavoirs() {
@@ -94,6 +117,22 @@ export class ApiService {
 
   getRessourcesSavoir(id) {
     return this.http.get<Iressource[]>(`${this.URL}/savoir/${id}/ressources`);
+  }
+
+  searchSavoirs(recherche) {
+    return this.http.get<Isavoir[]>(`${this.URL}/savoirs/${recherche}`);
+  }
+
+  addSavoirCategorieSavoir(idCategorieSavoir, idSavoir, savoir: Isavoir) {
+    return this.http.put<Isavoir>(`${this.URL}/categorie-savoir/${idCategorieSavoir}/addsavoir/${idSavoir}`, savoir);
+  }
+
+  deleteSavoirCategorieSavoir(idCategorieSavoir, idSavoir, savoir: Isavoir) {
+    return this.http.put<Isavoir>(`${this.URL}/categorie-savoir/${idCategorieSavoir}/delsavoir/${idSavoir}`, savoir);
+  }
+
+  getSavoirsCategorieSavoir(id) {
+    return this.http.get<Isavoir[]>(`${this.URL}/categorie-savoir/${id}/savoirs`);
   }
 
 }
