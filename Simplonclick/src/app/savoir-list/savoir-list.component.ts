@@ -3,7 +3,8 @@ import {
   MatTableDataSource,
   MatDialog,
   MatDialogConfig,
-  MatSort
+  MatSort,
+  MatSnackBar
 } from '@angular/material';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -22,7 +23,7 @@ export class SavoirListComponent implements OnInit {
   selectedRowIndex = -1;
   edition = false;
 
-  constructor(private savoirService: SavoirService, public dialog: MatDialog) {}
+  constructor(private snackBar: MatSnackBar, private savoirService: SavoirService, public dialog: MatDialog) {}
 
   displayedColumns = ['nom_savoir'];
   dataSourceSavoir = new MatTableDataSource();
@@ -76,15 +77,26 @@ export class SavoirListComponent implements OnInit {
     } else {
       this.savoirService
         .addSavoir(this.sav)
-        .subscribe();
+        .subscribe(
+          result => {this.afficherMessage('Enregistrement effectué', ''); },
+          error => {this.afficherMessage('', 'Savoir déjà présent'); }
+        );
     }
+  }
+
+  afficherMessage(message: string, erreur: string) {
+    this.snackBar.open(message, erreur, {
+      duration: 2000,
+    });
   }
 
   deleteSavoir() {
     this.edition = false;
     this.savoirService
       .deleteSavoir(this.sav.id_savoir)
-      .subscribe();
+      .subscribe(
+        result => {this.afficherMessage('Suppression effectuée', ''); }
+      );
     this.clearInput();
   }
 

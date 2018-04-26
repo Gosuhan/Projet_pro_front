@@ -3,7 +3,8 @@ import {
   MatTableDataSource,
   MatDialog,
   MatDialogConfig,
-  MatSort
+  MatSort,
+  MatSnackBar
 } from '@angular/material';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -21,7 +22,7 @@ export class MembreListComponent implements OnInit {
   edition = false;
   details = false;
 
-  constructor(private membreService: MembreService) {}
+  constructor(private snackBar: MatSnackBar, private membreService: MembreService) {}
 
   displayedColumns = [/*'pseudo',*/ 'nom', 'prenom'/*, 'email', 'pseudo_slack', 'image'*/, 'fonction'/*, 'niveau_general',
   'disponibilite_habituelle', 'disponibilite_actuelle', 'admin'*/];
@@ -82,19 +83,33 @@ export class MembreListComponent implements OnInit {
     if (this.edition) {
       this.membreService
         .updateMembre(this.memb)
-        .subscribe();
+        .subscribe(
+          result => {this.afficherMessage('Enregistrement effectué', ''); },
+          error => {this.afficherMessage('', 'Membre déjà existant'); }
+        );
     } else {
       this.membreService
         .addMembre(this.memb)
-        .subscribe();
+        .subscribe(
+          result => {this.afficherMessage('Enregistrement effectué', ''); },
+          error => {this.afficherMessage('', 'Membre déjà existant'); }
+        );
     }
+  }
+
+  afficherMessage(message: string, erreur: string) {
+    this.snackBar.open(message, erreur, {
+      duration: 2000,
+    });
   }
 
   deleteMembre() {
     this.edition = false;
     this.membreService
       .deleteMembre(this.memb.id_membre)
-      .subscribe();
+      .subscribe(
+        result => {this.afficherMessage('Suppression effectuée', ''); }
+      );
     this.clearInput();
   }
 

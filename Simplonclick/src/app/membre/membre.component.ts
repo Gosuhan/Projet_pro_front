@@ -3,7 +3,8 @@ import {
   MatTableDataSource,
   MatDialog,
   MatDialogConfig,
-  MatSort
+  MatSort,
+  MatSnackBar
 } from '@angular/material';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -24,7 +25,7 @@ export class MembreComponent implements OnInit {
   edition = false;
   edit = false;
 
-  constructor(private route: ActivatedRoute, private membreService: MembreService) {}
+  constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private membreService: MembreService) {}
 
   displayedColumns = [/*'pseudo',*/ 'nom', 'prenom'/*, 'email', 'pseudo_slack', 'image'*/, 'fonction'/*, 'niveau_general',
   'disponibilite_habituelle', 'disponibilite_actuelle', 'admin'*/];
@@ -70,14 +71,24 @@ export class MembreComponent implements OnInit {
     this.edition = false;
       this.membreService
         .updateMembre(this.memb)
-        .subscribe();
+        .subscribe(
+          result => {this.afficherMessage('Modification enregistrée', ''); }
+        );
+  }
+
+  afficherMessage(message: string, erreur: string) {
+    this.snackBar.open(message, erreur, {
+      duration: 2000,
+    });
   }
 
   deleteMembre() {
     this.edition = false;
     this.membreService
       .deleteMembre(this.memb.id_membre)
-      .subscribe();
+      .subscribe(
+        result => {this.afficherMessage('Votre compte a bien été supprimé', ''); }
+      );
     this.clearInput();
   }
 

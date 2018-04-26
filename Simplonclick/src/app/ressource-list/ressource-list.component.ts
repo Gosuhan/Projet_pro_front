@@ -3,7 +3,8 @@ import {
   MatTableDataSource,
   MatDialog,
   MatDialogConfig,
-  MatSort
+  MatSort,
+  MatSnackBar
 } from '@angular/material';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -20,7 +21,7 @@ export class RessourceListComponent implements OnInit {
   selectedRowIndex = -1;
   edition = false;
 
-  constructor(private ressourceService: RessourceService) {}
+  constructor(private snackBar: MatSnackBar, private ressourceService: RessourceService) {}
 
   displayedColumns = ['nom_ressource', 'url'];
   dataSourceRessource = new MatTableDataSource();
@@ -71,19 +72,33 @@ export class RessourceListComponent implements OnInit {
     if (this.edition) {
       this.ressourceService
         .updateRessource(this.ress)
-        .subscribe();
+        .subscribe(
+          result => {this.afficherMessage('Enregistrement effectué', ''); },
+          error => {this.afficherMessage('', 'Ressource déjà présente'); }
+        );
     } else {
       this.ressourceService
         .addRessource(this.ress)
-        .subscribe();
+        .subscribe(
+          result => {this.afficherMessage('Enregistrement effectué', ''); },
+          error => {this.afficherMessage('', 'Ressource déjà présente'); }
+        );
     }
+  }
+
+  afficherMessage(message: string, erreur: string) {
+    this.snackBar.open(message, erreur, {
+      duration: 2000,
+    });
   }
 
   deleteRessource() {
     this.edition = false;
     this.ressourceService
       .deleteRessource(this.ress.id_ressource)
-      .subscribe();
+      .subscribe(
+        result => {this.afficherMessage('Suppression effectuée', ''); }
+      );
     this.clearInput();
   }
 
