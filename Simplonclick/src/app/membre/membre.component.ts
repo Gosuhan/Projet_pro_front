@@ -22,6 +22,7 @@ export class MembreComponent implements OnInit {
   errText: string;
   selectedRowIndex = -1;
   edition = false;
+  edit = false;
 
   constructor(private route: ActivatedRoute, private membreService: MembreService) {}
 

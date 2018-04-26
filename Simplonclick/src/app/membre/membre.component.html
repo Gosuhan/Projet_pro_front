@@ -8,15 +8,16 @@
           <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>{{ memb.prenom }} alias {{ memb.pseudo }} est un {{ memb.fonction }} de Simplon.</p>
-        <p>Niveau général estimé : {{ memb.niveau_general }}</p>
-        <p>Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>
+        <h3>Bonjour {{ memb.prenom }}</h3>
+        <p>{{ memb.prenom }} (alias {{ memb.pseudo }}), à ce jour, tu es {{ memb.fonction }} à Simplon.</p>
+        <p>Tu estimes ton niveau général comme étant : {{ memb.niveau_general }}</p>
+        <p>Tes disponibilités habituelles sont : {{ memb.disponibilite_habituelle }}</p>
         <p>Pseudo du Slack : {{memb.pseudo_slack}}</p>   
-        <p>{{ memb.admin ? " A titre d'information, cette personne est administrateur du site." : " A titre d'information, cette personne n'est pas administrateur du site."}}</p>
-        <p>{{ memb.pseudo }}{{ memb.disponibilite_actuelle ? " est actuellement disponible." : " n'est actuellement pas disponible." }}</p>
+        <p>{{ memb.admin ? " A titre d'information, tu es administrateur du site." : " A titre d'information, tu n'es pas à ce jour administrateur du site."}}</p>
+        <p>{{ memb.pseudo }}, {{ memb.disponibilite_actuelle ? " tu confirmes être actuellement disponible." : " tu confirmes n'être actuellement pas disponible." }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button (click)="edit = !edit">Modifier mes informations</button>
+        <button mat-raised-button (click)="edit = !edit">{{edit? 'Informations à jour' : 'Mettre à jour mes informations'}}</button>
         <button mat-raised-button>Objectif</button>
       </mat-card-actions>
     </mat-card>
@@ -36,6 +37,11 @@
   <mat-form-field class="inputFullWidth">
     <input matInput placeholder="Pseudo" name="pseudo" [(ngModel)]="memb.pseudo">
   </mat-form-field>
+
+  <br>
+    <mat-form-field class="inputFullWidth">
+        <input matInput placeholder="Lien image" name="image" [(ngModel)]="memb.image">
+    </mat-form-field>
 
   <br>
   <mat-form-field class="inputFullWidth">
@@ -84,6 +90,6 @@
 
   <br>
   <br>
-  <button mat-raised-button (click)="deleteMembre()">Supprimer ce compte</button>
+  <button mat-raised-button (click)="deleteMembre()">Supprimer mon compte</button>
   <br>
 </div>

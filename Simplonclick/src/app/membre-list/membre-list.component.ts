@@ -19,6 +19,7 @@ export class MembreListComponent implements OnInit {
   memb: Imembre;
   selectedRowIndex = -1;
   edition = false;
+  details = false;
 
   constructor(private membreService: MembreService) {}
 

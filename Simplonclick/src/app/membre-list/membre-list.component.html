@@ -1,5 +1,5 @@
 <div>
-    <mat-card class="background" *ngIf= "memb.nom">
+    <mat-card class="background" *ngIf= "memb.nom && details">
         <div mat-card-avatar class="example-header-image">
                 <img mat-card-image src="{{memb.image}}" alt="Avatar">
         </div>
@@ -96,6 +96,8 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_membre}" (click)="highlight(row)"></mat-row>
     </mat-table>
+    <br>
+    <button mat-raised-button color="primary" (click)="details = !details">{{details ? 'Ne pas faire apparaître les détails' : 'Faire apparaître les détails'}}</button>
 </div>
 
     <br>
@@ -166,5 +168,5 @@
 
 <br>
 <br>
-<button mat-raised-button (click)="deleteMembre()">Supprimer ce compte</button>
+<button mat-raised-button class="buttonColorBlack" (click)="deleteMembre()">Supprimer ce compte</button>
 <br>

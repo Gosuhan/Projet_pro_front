@@ -1,23 +1,32 @@
 .highlight {
-    background: #E80041;
-  }
+  background: #E80041;
+}
 
 .textaligncenter {
-    text-align: center;
-  }
+  text-align: center;
+}
 
 .textalignleft {
-    text-align: left;
-  }
+  text-align: left;
+}
 
 .background {
-    background-color: #e3e2d5;
-  }
+  background-color: #e3e2d5;
+}
+
+.buttonColorRed {
+  background: #E80041;
+}
+
+.buttonColorBlack {
+  background: black;
+  color: white;
+}
 
 img {
-    position: absolute;
-    left: 60px;
-    top: 5px;
-	width: 70px;
-    height: auto;
+  position: absolute;
+  left: 60px;
+  top: 5px;
+  width: 70px;
+  height: auto;
 }
