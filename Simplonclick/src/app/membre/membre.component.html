@@ -1,3 +1,89 @@
-<p>
-  membre works!
-</p>
+<div>
+  <mat-card class="background">
+      <div mat-card-avatar class="example-header-image">
+              <img mat-card-image src="{{memb.image}}" alt="Avatar">
+      </div>
+      <mat-card-header>
+          <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
+          <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ memb.prenom }} alias {{ memb.pseudo }} est un {{ memb.fonction }} de Simplon.</p>
+        <p>Niveau général estimé : {{ memb.niveau_general }}</p>
+        <p>Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>
+        <p>Pseudo du Slack : {{memb.pseudo_slack}}</p>   
+        <p>{{ memb.admin ? " A titre d'information, cette personne est administrateur du site." : " A titre d'information, cette personne n'est pas administrateur du site."}}</p>
+        <p>{{ memb.pseudo }}{{ memb.disponibilite_actuelle ? " est actuellement disponible." : " n'est actuellement pas disponible." }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="edit = !edit">Modifier mes informations</button>
+        <button mat-raised-button>Objectif</button>
+      </mat-card-actions>
+    </mat-card>
+    <br>
+    <br>
+</div>
+<div *ngIf="edit">
+  <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
+
+  <br>
+  <br>
+  <mat-slide-toggle name="disponibilite_actuelle" [(ngModel)]="memb.disponibilite_actuelle">{{memb.disponibilite_actuelle ? 'Disponible' : 'Non disponible'}}</mat-slide-toggle>
+
+  <br>
+  <br>
+  <form #membreForm="ngForm">
+  <mat-form-field class="inputFullWidth">
+    <input matInput placeholder="Pseudo" name="pseudo" [(ngModel)]="memb.pseudo">
+  </mat-form-field>
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Nom" required name="nom" [(ngModel)]="memb.nom">
+  </mat-form-field>
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Prénom" required name="prenom" [(ngModel)]="memb.prenom">
+  </mat-form-field>
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="E-mail" required name="email" [(ngModel)]="memb.email">
+  </mat-form-field>
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Pseudo du slack" name="pseudo_slack" [(ngModel)]="memb.pseudo_slack">
+  </mat-form-field>
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Fonction" name="fonction" [(ngModel)]="memb.fonction">
+  </mat-form-field>
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Niveau général" name="niveau_general" [(ngModel)]="memb.niveau_general">
+  </mat-form-field>
+
+  <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Disponibilité habituelle" name="disponibilite_habituelle" [(ngModel)]="memb.disponibilite_habituelle">
+  </mat-form-field>
+
+  <!-- <br>
+  <mat-form-field class="inputFullWidth">
+      <input matInput placeholder="Disponibilité actuelle" name="disponibilite_actuelle" [(ngModel)]="memb.disponibilite_actuelle">
+  </mat-form-field> -->
+
+  <br>
+  <br>
+  <button mat-raised-button color="primary" (click)="editMembre()">Modifier</button>
+  </form>
+
+  <br>
+  <br>
+  <button mat-raised-button (click)="deleteMembre()">Supprimer ce compte</button>
+  <br>
+</div>

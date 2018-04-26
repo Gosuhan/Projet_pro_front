@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   { path: 'objectif', component: ObjectifComponent },
   { path: 'categorie-savoir', component: CategorieSavoirComponent },
   { path: 'savoir', component: SavoirComponent },
-  { path: 'membre', component: MembreComponent },
+  { path: 'membre/:id', component: MembreComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', component: AccueilComponent}
 ];

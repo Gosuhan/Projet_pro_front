@@ -2,19 +2,19 @@
     background: #E80041;
   }
 
-  .textaligncenter {
-      text-align: center;
+.textaligncenter {
+    text-align: center;
   }
 
-  .textalignleft {
-      text-align: left;
+.textalignleft {
+    text-align: left;
   }
 
-  .background {
+.background {
     background-color: #e3e2d5;
   }
 
-  img {
+img {
     position: absolute;
     left: 60px;
     top: 5px;
