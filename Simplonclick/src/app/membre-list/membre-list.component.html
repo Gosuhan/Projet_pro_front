@@ -16,19 +16,20 @@
             <p>{{ memb.pseudo }}{{ memb.disponibilite_actuelle ? " est actuellement disponible." : " n'est actuellement pas disponible." }}</p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button>Lien</button>
-            <button mat-raised-button>Lien</button>
-            <br>
-            <br>
             <button mat-raised-button (click)="cancelSelect()">Annuler</button>
         </mat-card-actions>
         </mat-card>
         <br>
         <br>
     <div>
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
-    </mat-form-field>
+
+        <br>
+        <button mat-raised-button color="primary" (click)="details = !details">Détails <mat-icon>{{details ? "keyboard_arrow_up" : "keyboard_arrow_down"}}</mat-icon></button>
+        <br>
+        <br>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+        </mat-form-field>
     </div>
 
     <mat-table #table [dataSource]="dataSourceMembre" matSort>
@@ -96,10 +97,45 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_membre}" (click)="highlight(row)"></mat-row>
     </mat-table>
+
     <br>
-    <button mat-raised-button color="primary" (click)="details = !details">{{details ? 'Ne pas faire apparaître les détails' : 'Faire apparaître les détails'}}</button>
+    <br>
+    <div *ngIf="memb.nom && objectif">
+        <div>
+            <mat-card>
+                <mat-card-content>
+                    <h2>Objectifs de {{memb.pseudo}}</h2>
+                    <mat-tab-group>
+                    <mat-tab label="Besoins">
+                        <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
+                                {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Connaissances">
+                        <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
+                                {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                        </div> 
+                    </mat-tab>
+                    </mat-tab-group>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <br>
+    <button mat-raised-button color="primary" (click)="objectif = !objectif">Objectifs <mat-icon>{{objectif ? "keyboard_arrow_up" : "keyboard_arrow_down"}}</mat-icon></button>
+
+    <br>
+    <br>
+    <button mat-raised-button (click)="edit = !edit">{{edit? 'Informations à jour' : 'Mettre à jour les informations'}}</button>
+    
+    <br>
+    <br>
+    <button mat-raised-button (click)="cancelSelect()">Annuler</button>
+
 </div>
 
+<div *ngIf="edit">
     <br>
     <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
     
@@ -170,3 +206,4 @@
 <br>
 <button mat-raised-button class="buttonColorBlack" (click)="deleteMembre()">Supprimer ce compte</button>
 <br>
+</div>

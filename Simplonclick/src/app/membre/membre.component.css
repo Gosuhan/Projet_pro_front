@@ -14,3 +14,8 @@ img {
     background: black;
     color: white;
   }
+
+.textcenter {
+    text-align: center;
+    margin-top: 2rem;
+}

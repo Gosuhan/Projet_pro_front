@@ -25,9 +25,29 @@
     <br>
 </div>
 
+<br>
 <div *ngIf="objectif">
-    <app-inscription></app-inscription>
+    <div>
+        <mat-card>
+            <mat-card-content>
+              <h2>Objectifs</h2>
+              <mat-tab-group>
+                <mat-tab label="Mes besoins">
+                  <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
+                            {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                  </div>
+                </mat-tab>
+                <mat-tab label="Mes connaissances">
+                    <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
+                            {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                    </div> 
+                </mat-tab>
+              </mat-tab-group>
+            </mat-card-content>
+          </mat-card>
+    </div>
 </div>
+<br>
 
 <div *ngIf="edit">
   <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>

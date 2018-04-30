@@ -26,7 +26,8 @@ import {
   MatSlideToggleModule,
   MatTooltipModule,
   MatSortModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTabsModule
 } from '@angular/material';
 
 
@@ -107,7 +108,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     MatTooltipModule,
     MatSnackBarModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTabsModule
   ],
   providers: [
     AppService,
