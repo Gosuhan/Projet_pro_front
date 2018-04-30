@@ -1,3 +1,4 @@
+import { InscriptionService } from './inscription.service';
 import { RessourceService } from './ressource.service';
 import { SavoirService } from './savoir.service';
 import { ApiService } from './api.service';
@@ -54,6 +55,7 @@ import { RessourceDuSavoirComponent } from './ressource-du-savoir/ressource-du-s
 import { SavoirDeCategorieSavoirComponent } from './savoir-de-categorie-savoir/savoir-de-categorie-savoir.component';
 import { SavoiraCategorieSavoirComponent } from './savoira-categorie-savoir/savoira-categorie-savoir.component';
 import { CategorieSavoirService } from './categorie-savoir.service';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,7 @@ import { CategorieSavoirService } from './categorie-savoir.service';
     RessourceDuSavoirComponent,
     SavoirDeCategorieSavoirComponent,
     SavoiraCategorieSavoirComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,7 +115,8 @@ import { CategorieSavoirService } from './categorie-savoir.service';
     ApiService,
     SavoirService,
     RessourceService,
-    CategorieSavoirService
+    CategorieSavoirService,
+    InscriptionService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

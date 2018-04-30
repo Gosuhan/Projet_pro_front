@@ -1,0 +1,33 @@
+<div>
+  <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-table #table [dataSource]="dataSourceInscription" matSort>
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id_inscription">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Réf. </mat-header-cell>
+      <mat-cell *matCellDef="let inscription"> {{inscription.id_inscription}} </mat-cell>
+  </ng-container>
+
+  <!-- Id savoir Column -->
+  <!-- <ng-container matColumnDef="inscription.savoir.id_savoir">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Savoir </mat-header-cell>
+    <mat-cell *matCellDef="let inscription"> {{inscription.savoir.id_savoir}} </mat-cell>
+  </ng-container> -->
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_inscription}" (click)="highlight(row)"></mat-row>
+  </mat-table>
+</div>
+
+<br>
+<button mat-raised-button (click)="cancelSelect()">Annuler</button>
+
+<br>
+<br>
+<button mat-raised-button class="buttonColorBlack" (click)="deleteInscriptionMembre()">Annuler cette demande</button>
+<br>

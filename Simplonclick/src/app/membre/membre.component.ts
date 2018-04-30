@@ -24,6 +24,7 @@ export class MembreComponent implements OnInit {
   selectedRowIndex = -1;
   edition = false;
   edit = false;
+  objectif = false;
 
   constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private membreService: MembreService) {}
 

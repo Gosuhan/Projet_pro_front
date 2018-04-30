@@ -18,12 +18,17 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button (click)="edit = !edit">{{edit? 'Informations à jour' : 'Mettre à jour mes informations'}}</button>
-        <button mat-raised-button>Objectif</button>
+        <button mat-raised-button (click)="objectif = !objectif">Mes Objectifs</button>
       </mat-card-actions>
     </mat-card>
     <br>
     <br>
 </div>
+
+<div *ngIf="objectif">
+    <app-inscription></app-inscription>
+</div>
+
 <div *ngIf="edit">
   <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
 
