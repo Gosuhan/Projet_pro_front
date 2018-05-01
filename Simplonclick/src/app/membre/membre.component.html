@@ -19,6 +19,7 @@
       <mat-card-actions>
         <button mat-raised-button (click)="edit = !edit">{{edit? 'Informations à jour' : 'Mettre à jour mes informations'}}</button>
         <button mat-raised-button (click)="objectif = !objectif">Mes Objectifs</button>
+        <button mat-raised-button (click)="inscription = !inscription">Inscriptions</button>
       </mat-card-actions>
     </mat-card>
     <br>
@@ -46,6 +47,31 @@
             </mat-card-content>
           </mat-card>
     </div>
+</div>
+<br>
+
+<div *ngIf="inscription">
+    <div>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+        </mat-form-field>
+    </div>
+    
+      <mat-table #table [dataSource]="dataSourceInscription" matSort>
+    
+        <!-- Nom Column -->
+        <ng-container matColumnDef="id_inscription">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Réf. </mat-header-cell>
+          <mat-cell *matCellDef="let inscription"> {{inscription.id_inscription}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_inscription}" (click)="highlight(row)"></mat-row>
+      </mat-table>
+      <br>
+      <br>
+      <button mat-raised-button class="buttonColorBlack" (click)="deleteInscriptionMembre(insc.id_inscription, insc.membre_id_membre)">Supprimer cette inscription</button>
+      <br>
 </div>
 <br>
 

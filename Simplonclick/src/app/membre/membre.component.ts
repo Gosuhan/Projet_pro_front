@@ -10,7 +10,9 @@ import {
 import { Subscription } from 'rxjs/Subscription';
 import { Imembre } from '../imembre';
 import { MembreService } from '../membre.service';
+import { InscriptionService } from './../inscription.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Iinscription } from '../iinscription';
 
 @Component({
   selector: 'app-membre',
@@ -25,8 +27,26 @@ export class MembreComponent implements OnInit {
   edition = false;
   edit = false;
   objectif = false;
+  inscription = false;
+  insc: Iinscription;
 
-  constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private membreService: MembreService) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    private membreService: MembreService,
+    private inscriptionService: InscriptionService
+  ) {}
+
+  displayedColumns = ['id_inscription'];
+  dataSourceInscription = new MatTableDataSource();
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSourceInscription.filter = filterValue;
+  }
 
   ngOnInit() {
     this.memb = {
@@ -54,6 +74,13 @@ export class MembreComponent implements OnInit {
         memb => (this.memb = memb),
      );
     });
+
+    this.insc = {
+      id_inscription: null
+    };
+    this.refreshTab();
+
+    this.inscriptionService.update$.subscribe(() => this.refreshTab());
   }
 
   editMembre() {
@@ -96,6 +123,75 @@ export class MembreComponent implements OnInit {
       niveau_general: '',
       disponibilite_habituelle: '',
       disponibilite_actuelle: false
+    };
+  }
+
+  refreshTab() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      console.log( params.get('id'));
+      this.id = +this.route.snapshot.paramMap.get('id');
+    this.inscriptionService
+      .getInscriptionsMembre(this.id)
+      .subscribe((data: Iinscription[]) => {
+        this.dataSourceInscription = new MatTableDataSource(data);
+        this.dataSourceInscription.sort = this.sort;
+      });
+    });
+  }
+
+  highlight(row) {
+    this.selectedRowIndex = row.id_inscription;
+    this.insc = Object.assign({}, row);
+    this.edition = true;
+  }
+
+  cancelSelect() {
+    this.selectedRowIndex = -1;
+    this.edition = false;
+    this.clearInput();
+  }
+
+  onSubmit() {
+    // if (this.edition) {
+    //   this.savoirService
+    //     .updateSavoir(this.sav)
+    //     .subscribe();
+    // } else {
+    //   this.savoirService
+    //     .addSavoir(this.sav)
+    //     .subscribe(
+    //       result => {this.afficherMessage('Enregistrement effectué', ''); },
+    //       error => {this.afficherMessage('', 'Savoir déjà présent'); }
+    //     );
+    // }
+  }
+
+  deleteInscriptionMembre(idInscription, idMembre) {
+    const membre: Imembre = {
+      id_membre: this.memb.id_membre,
+      pseudo: this.memb.pseudo,
+      password: this.memb.password,
+      nom: this.memb.nom,
+      prenom: this.memb.prenom,
+      admin: this.memb.admin,
+      email: this.memb.email,
+      pseudo_slack: this.memb.pseudo_slack,
+      image: this.memb.image,
+      fonction: this.memb.fonction,
+      niveau_general: this.memb.niveau_general,
+      disponibilite_habituelle: this.memb.disponibilite_habituelle,
+      disponibilite_actuelle: this.memb.disponibilite_actuelle
+    };
+    const inscription: Iinscription = {
+      id_inscription: idInscription,
+      membre_id_membre: idMembre
+    };
+    this.inscriptionService.deleteInscriptionMembre(membre, inscription).subscribe(succes => this.refreshTab());
+  }
+
+  clearInputInsc() {
+    this.insc = {
+      id_inscription: null,
     };
   }
 

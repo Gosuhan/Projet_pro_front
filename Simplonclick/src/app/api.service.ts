@@ -140,12 +140,18 @@ export class ApiService {
     return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres`);
   }
 
-  // getInscriptionsMembre(id) {
-  //   return this.http.get<Iinscription[]>(`${this.URL}/membre/${id}/inscriptions`);
-  // }
+  getInscriptionsMembre(id) {
+    return this.http.get<Iinscription[]>(`${this.URL}/membre/${id}/inscriptions`);
+  }
 
-  // deleteInscriptionMembre(idMembre, idInscription, inscription: Iinscription) {
-  //   return this.http.put<Iinscription>(`${this.URL}/categorie-savoir/${idMembre}/delinscription/${idInscription}`, inscription);
-  // }
+  deleteInscriptionMembre(idMembre, idInscription, inscription: Iinscription) {
+    return this.http.put<Iinscription>(`${this.URL}/membre/${idMembre}/delinscription/${idInscription}`, inscription);
+  }
+
+  addInscription(inscription: Iinscription) {
+    if (inscription.id_inscription == null) {
+      return this.http.post<Iinscription>(`${this.URL}/inscription`, inscription);
+    }
+  }
 
 }
