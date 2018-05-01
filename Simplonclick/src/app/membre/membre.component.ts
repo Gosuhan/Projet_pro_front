@@ -37,7 +37,7 @@ export class MembreComponent implements OnInit {
     private inscriptionService: InscriptionService
   ) {}
 
-  displayedColumns = ['id_inscription'];
+  displayedColumns = ['id_inscription', 'nom_inscription'];
   dataSourceInscription = new MatTableDataSource();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -76,7 +76,8 @@ export class MembreComponent implements OnInit {
     });
 
     this.insc = {
-      id_inscription: null
+      id_inscription: null,
+      nom_inscription: ''
     };
     this.refreshTab();
 
@@ -151,19 +152,22 @@ export class MembreComponent implements OnInit {
     this.clearInput();
   }
 
+  cancelSelectInsc() {
+    this.selectedRowIndex = -1;
+    this.edition = false;
+    this.clearInputInsc();
+  }
+
   onSubmit() {
-    // if (this.edition) {
-    //   this.savoirService
-    //     .updateSavoir(this.sav)
-    //     .subscribe();
-    // } else {
-    //   this.savoirService
-    //     .addSavoir(this.sav)
-    //     .subscribe(
-    //       result => {this.afficherMessage('Enregistrement effectué', ''); },
-    //       error => {this.afficherMessage('', 'Savoir déjà présent'); }
-    //     );
-    // }
+    if (this.edition) {
+    } else {
+      this.inscriptionService
+        .addInscription(this.insc)
+        .subscribe(
+          result => {this.afficherMessage('Clef d\'accès enregistrée', ''); },
+          error => {this.afficherMessage('', 'Clef d\'accès déjà existante'); }
+        );
+    }
   }
 
   deleteInscriptionMembre(idInscription, idMembre) {
@@ -192,6 +196,7 @@ export class MembreComponent implements OnInit {
   clearInputInsc() {
     this.insc = {
       id_inscription: null,
+      nom_inscription: ''
     };
   }
 

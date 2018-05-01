@@ -57,22 +57,46 @@
         </mat-form-field>
     </div>
     
-      <mat-table #table [dataSource]="dataSourceInscription" matSort>
-    
-        <!-- Nom Column -->
-        <ng-container matColumnDef="id_inscription">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Réf. </mat-header-cell>
-          <mat-cell *matCellDef="let inscription"> {{inscription.id_inscription}} </mat-cell>
-        </ng-container>
-    
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_inscription}" (click)="highlight(row)"></mat-row>
-      </mat-table>
-      <br>
-      <br>
-      <button mat-raised-button class="buttonColorBlack" (click)="deleteInscriptionMembre(insc.id_inscription, insc.membre_id_membre)">Supprimer cette inscription</button>
-      <br>
-</div>
+        <mat-table #table [dataSource]="dataSourceInscription" matSort>
+        
+            <!-- Id Column -->
+            <ng-container matColumnDef="id_inscription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Réf. </mat-header-cell>
+            <mat-cell *matCellDef="let inscription"> {{inscription.id_inscription}} </mat-cell>
+            </ng-container>
+
+            <!-- Nom Column -->
+            <ng-container matColumnDef="nom_inscription">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Clef d'accès </mat-header-cell>
+                    <mat-cell *matCellDef="let inscription"> {{inscription.nom_inscription}} </mat-cell>
+                    </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_inscription}" (click)="highlight(row)"></mat-row>
+        </mat-table>
+
+        <form #inscriptionForm="ngForm" (ngSubmit)="onSubmit(inscriptionForm)">
+
+            <br>
+            <mat-form-field class="inputFullWidth">
+                <input matInput placeholder="Clef d'accès" required name="nom_inscription" [(ngModel)]="insc.nom_inscription">
+            </mat-form-field>
+            
+            <br>
+            <br>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Ajouter'}}</button>
+        </form>
+
+        <div *ngIf="edition">    
+            <br>
+            <button mat-raised-button (click)="cancelSelectInsc()">Annuler</button>
+
+            <br>
+            <br>
+            <button mat-raised-button class="buttonColorBlack" (click)="deleteInscriptionMembre(insc.id_inscription, insc.membre_id_membre)">Supprimer cette inscription</button>
+            <br>
+        </div>
+    </div>
 <br>
 
 <div *ngIf="edit">
