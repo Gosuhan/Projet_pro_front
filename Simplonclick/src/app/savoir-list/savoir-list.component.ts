@@ -12,6 +12,7 @@ import { Isavoir } from '../isavoir';
 import { SavoirService } from '../savoir.service';
 import { RessourceAuSavoirComponent } from '../ressource-au-savoir/ressource-au-savoir.component';
 import { RessourceDuSavoirComponent } from '../ressource-du-savoir/ressource-du-savoir.component';
+import { MembreDeSavoirComponent } from '../membre-de-savoir/membre-de-savoir.component';
 
 @Component({
   selector: 'app-savoir-list',
@@ -22,6 +23,7 @@ export class SavoirListComponent implements OnInit {
   sav: Isavoir;
   selectedRowIndex = -1;
   edition = false;
+  demandes = false;
 
   constructor(private snackBar: MatSnackBar, private savoirService: SavoirService, public dialog: MatDialog) {}
 
@@ -117,6 +119,13 @@ export class SavoirListComponent implements OnInit {
 
   ressourcesDuSavoir() {
     this.dialog.open(RessourceDuSavoirComponent, {
+      width: '600px',
+      data: this.sav.id_savoir
+    });
+  }
+
+  membresDeSavoir() {
+    this.dialog.open(MembreDeSavoirComponent, {
       width: '600px',
       data: this.sav.id_savoir
     });

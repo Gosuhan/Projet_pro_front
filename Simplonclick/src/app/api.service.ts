@@ -136,12 +136,16 @@ export class ApiService {
     return this.http.get<Isavoir[]>(`${this.URL}/categorie-savoir/${id}/savoirs`);
   }
 
-  getInscriptionsMembre(id) {
-    return this.http.get<Iinscription[]>(`${this.URL}/membre/${id}/inscriptions`);
+  getMembresSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres`);
   }
 
-  deleteInscriptionMembre(idMembre, idInscription, inscription: Iinscription) {
-    return this.http.put<Iinscription>(`${this.URL}/categorie-savoir/${idMembre}/delinscription/${idInscription}`, inscription);
-  }
+  // getInscriptionsMembre(id) {
+  //   return this.http.get<Iinscription[]>(`${this.URL}/membre/${id}/inscriptions`);
+  // }
+
+  // deleteInscriptionMembre(idMembre, idInscription, inscription: Iinscription) {
+  //   return this.http.put<Iinscription>(`${this.URL}/categorie-savoir/${idMembre}/delinscription/${idInscription}`, inscription);
+  // }
 
 }

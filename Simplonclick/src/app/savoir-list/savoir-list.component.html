@@ -17,6 +17,9 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_savoir}" (click)="highlight(row)"></mat-row>
   </mat-table>
 </div>
+<br>
+<br>
+<button mat-raised-button color="primary" (click)="membresDeSavoir()">Demandes liées à ce savoir <mat-icon>keyboard_arrow_right</mat-icon></button>
 
   <br>
   <br>

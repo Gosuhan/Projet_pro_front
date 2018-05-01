@@ -2,7 +2,12 @@
     background: #E80041;
   }
 
-  .buttonColorBlack {
-    background: black;
-    color: white;
+.buttonColorBlack {
+  background: black;
+  color: white;
+  }
+
+.textcenter {
+  text-align: center;
+  margin-top: 2rem;
   }

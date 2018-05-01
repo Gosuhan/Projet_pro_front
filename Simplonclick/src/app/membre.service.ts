@@ -36,4 +36,8 @@ export class MembreService {
   deleteMembre(id) {
     return this.api.deleteMembre(id).pipe(tap(data => this.update$.next()));
   }
+
+  getMembresSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresSavoir(id) as Observable<Imembre[]>;
+  }
 }

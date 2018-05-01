@@ -65,10 +65,10 @@
     </ng-container> -->
 
     <!-- Fonction Column -->
-    <ng-container matColumnDef="fonction">
+    <!-- <ng-container matColumnDef="fonction">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Fonction </mat-header-cell>
         <mat-cell *matCellDef="let membre"> {{membre.fonction}} </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <!-- Niveau_general Column -->
     <!-- <ng-container matColumnDef="niveau_general">
@@ -83,10 +83,10 @@
     </ng-container> -->
 
     <!-- Disponibilite_actuelle Column -->
-    <!-- <ng-container matColumnDef="disponibilite_actuelle">
+    <ng-container matColumnDef="disponibilite_actuelle">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Disponibilité actuelle </mat-header-cell>
-        <mat-cell *matCellDef="let membre"> {{membre.disponibilite_actuelle ? 'Disponible' : 'Non disponible'}} </mat-cell>
-    </ng-container> -->
+        <mat-cell *matCellDef="let membre"><mat-icon>{{membre.disponibilite_actuelle ? "thumb_up" : ""}}</mat-icon> </mat-cell>
+    </ng-container>
 
     <!-- Admin Column -->
     <!-- <ng-container matColumnDef="admin">

@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-content>
+    <h2>Demandes</h2>
+    <mat-tab-group>
+      <mat-tab label="Demande de soutien">
+        <div *ngFor="let membre of membres" class="textcenter">
+          {{membre.nom}}
+              <!-- {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} -->
+        </div>
+      </mat-tab>
+      <mat-tab label="Offre de soutien">
+        <div *ngFor="let membre of membres" class="textcenter">
+            {{membre.nom}}
+            <!-- {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} -->
+        </div> 
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
+

@@ -28,18 +28,6 @@ export class MembreComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private membreService: MembreService) {}
 
-  displayedColumns = [/*'pseudo',*/ 'nom', 'prenom'/*, 'email', 'pseudo_slack', 'image'*/, 'fonction'/*, 'niveau_general',
-  'disponibilite_habituelle', 'disponibilite_actuelle', 'admin'*/];
-  dataSourceMembre = new MatTableDataSource();
-
-  @ViewChild(MatSort) sort: MatSort;
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSourceMembre.filter = filterValue;
-  }
-
   ngOnInit() {
     this.memb = {
           id_membre: null,

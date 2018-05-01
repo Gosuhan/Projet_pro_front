@@ -26,8 +26,8 @@ export class MembreListComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, private membreService: MembreService) {}
 
-  displayedColumns = [/*'pseudo',*/ 'nom', 'prenom'/*, 'email', 'pseudo_slack', 'image'*/, 'fonction'/*, 'niveau_general',
-  'disponibilite_habituelle', 'disponibilite_actuelle', 'admin'*/];
+  displayedColumns = [/*'pseudo',*/ 'nom', 'prenom'/*, 'email', 'pseudo_slack', 'image', 'fonction'/*, 'niveau_general',
+  'disponibilite_habituelle'*/, 'disponibilite_actuelle'/*, 'admin'*/];
   dataSourceMembre = new MatTableDataSource();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -52,7 +52,11 @@ export class MembreListComponent implements OnInit {
       fonction: '',
       niveau_general: '',
       disponibilite_habituelle: '',
-      disponibilite_actuelle: false
+      disponibilite_actuelle: false,
+      inscriptions: [],
+      types_inscription: [],
+      savoirs: [],
+      niveaux_savoir: []
     };
 
     this.refreshTab();
