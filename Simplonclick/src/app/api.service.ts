@@ -7,6 +7,7 @@ import { IcategorieSavoir } from './icategorie-savoir';
 import { Isavoir } from './isavoir';
 import { Iressource } from './iressource';
 import { Iinscription } from './iinscription';
+import { ItypeInscription } from './itype-inscription';
 
 @Injectable()
 export class ApiService {
@@ -148,6 +149,10 @@ export class ApiService {
     return this.http.put<Iinscription>(`${this.URL}/membre/${idMembre}/delinscription/${idInscription}`, inscription);
   }
 
+  getInscription(id) {
+    return this.http.get<Iinscription>(`${this.URL}/inscription/${id}`);
+  }
+
   addInscription(inscription: Iinscription) {
     if (inscription.id_inscription == null) {
       return this.http.post<Iinscription>(`${this.URL}/inscription`, inscription);
@@ -160,6 +165,22 @@ export class ApiService {
 
   searchInscriptions(recherche) {
     return this.http.get<Iinscription[]>(`${this.URL}/inscriptions/${recherche}`);
+  }
+
+  searchTypesInscription(recherche) {
+    return this.http.get<ItypeInscription[]>(`${this.URL}/types-inscription/${recherche}`);
+  }
+
+  getTypesInscription() {
+    return this.http.get<ItypeInscription[]>(`${this.URL}/types-inscription`);
+  }
+
+  getTypeInscription(id) {
+    return this.http.get<ItypeInscription>(`${this.URL}/type-inscription/${id}`);
+  }
+
+  addInscriptionTypeInscription(idTypeInscription, idInscription, inscription: Iinscription) {
+    return this.http.put<Iinscription>(`${this.URL}/type-inscription/${idTypeInscription}/addinscription/${idInscription}`, inscription);
   }
 
 }

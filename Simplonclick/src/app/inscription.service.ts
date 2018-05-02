@@ -5,6 +5,7 @@ import { Iinscription } from './iinscription';
 import { Observable } from 'rxjs/Observable';
 import { Imembre } from './imembre';
 import { tap } from 'rxjs/operators';
+import { ItypeInscription } from './itype-inscription';
 
 @Injectable()
 export class InscriptionService {
@@ -23,6 +24,10 @@ export class InscriptionService {
     return this.api.deleteInscriptionMembre(membre.id_membre, inscription.id_inscription, inscription) as Observable<Iinscription>;
   }
 
+  getInscription(id): Observable<Iinscription> {
+    return this.api.getInscription(id) as Observable<Iinscription>;
+  }
+
   addInscription(inscription: Iinscription): Observable<Iinscription> {
     return this.api
       .addInscription(inscription)
@@ -35,6 +40,11 @@ export class InscriptionService {
 
   searchInscriptions(recherche): Observable<Iinscription[]> {
     return this.api.searchInscriptions(recherche) as Observable<Iinscription[]>;
+  }
+
+  addInscriptionTypeInscription(typeInscription: ItypeInscription, inscription: Iinscription): Observable<Iinscription> {
+    // tslint:disable-next-line:max-line-length
+    return this.api.addInscriptionTypeInscription(typeInscription.id_type_inscription, inscription.id_inscription, inscription) as Observable<Iinscription>;
   }
 
 }

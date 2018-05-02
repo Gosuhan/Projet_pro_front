@@ -14,6 +14,8 @@ import { InscriptionService } from './../inscription.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Iinscription } from '../iinscription';
 import { InscriptionAuMembreComponent } from '../inscription-au-membre/inscription-au-membre.component';
+import { ItypeInscription } from '../itype-inscription';
+import { TypeInscriptionaInscriptionComponent } from '../type-inscriptiona-inscription/type-inscriptiona-inscription.component';
 
 @Component({
   selector: 'app-membre',
@@ -31,6 +33,7 @@ export class MembreComponent implements OnInit {
   inscriptionBoolean = false;
   insc: Iinscription;
   selectedInscription = false;
+  typeInsc: ItypeInscription;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -207,6 +210,13 @@ export class MembreComponent implements OnInit {
     this.dialog.open(InscriptionAuMembreComponent, {
       width: '600px',
       data: this.memb.id_membre
+    });
+  }
+
+  ajouterTypeInscriptionaInscription() {
+    this.dialog.open(TypeInscriptionaInscriptionComponent, {
+      width: '600px',
+      data: this.insc.id_inscription
     });
   }
 

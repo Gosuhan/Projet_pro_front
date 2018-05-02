@@ -95,6 +95,10 @@
         <button mat-raised-button (click)="ajouterInscriptionAuMembre()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Récupération de la clé d\'accès'}}</button>
         <button mat-raised-button (click)="refreshTab()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Raffraichir'}}</button>
 
+        <br>
+        <br>
+        <button mat-raised-button (click)="ajouterTypeInscriptionaInscription()" [disabled]="!inscriptionForm.valid">{{edition ? 'Choisir un type d\'inscription' : ''}}</button>
+
         <div *ngIf="edition">    
             <br>
             <button mat-raised-button (click)="cancelSelectInsc()">Annuler</button>
