@@ -29,4 +29,12 @@ export class InscriptionService {
       .pipe(tap(data => this.update$.next()));
   }
 
+  addInscriptionMembre(membre: Imembre, inscription: Iinscription): Observable<Iinscription> {
+    return this.api.addInscriptionMembre(membre.id_membre, inscription.id_inscription, inscription) as Observable<Iinscription>;
+  }
+
+  searchInscriptions(recherche): Observable<Iinscription[]> {
+    return this.api.searchInscriptions(recherche) as Observable<Iinscription[]>;
+  }
+
 }

@@ -58,6 +58,7 @@ import { SavoiraCategorieSavoirComponent } from './savoira-categorie-savoir/savo
 import { CategorieSavoirService } from './categorie-savoir.service';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { MembreDeSavoirComponent } from './membre-de-savoir/membre-de-savoir.component';
+import { InscriptionAuMembreComponent } from './inscription-au-membre/inscription-au-membre.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { MembreDeSavoirComponent } from './membre-de-savoir/membre-de-savoir.com
     SavoirDeCategorieSavoirComponent,
     SavoiraCategorieSavoirComponent,
     InscriptionComponent,
-    MembreDeSavoirComponent
+    MembreDeSavoirComponent,
+    InscriptionAuMembreComponent
   ],
   imports: [
     BrowserModule,
@@ -128,7 +130,8 @@ import { MembreDeSavoirComponent } from './membre-de-savoir/membre-de-savoir.com
     RessourceDuSavoirComponent,
     SavoirDeCategorieSavoirComponent,
     SavoiraCategorieSavoirComponent,
-    MembreDeSavoirComponent
+    MembreDeSavoirComponent,
+    InscriptionAuMembreComponent
   ]
 })
 export class AppModule { }

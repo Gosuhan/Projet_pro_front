@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Précisez votre clef d'accès</h2>
+
+<mat-dialog-content>
+
+  <div>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Recherche" name="recherche" #recherche>
+    </mat-form-field>
+    <button mat-raised-button (click)="rechercher(recherche.value)"><mat-icon>search</mat-icon></button>
+  </div>
+
+  <div *ngIf="dataSourceInscriptions.data.length>0">
+    <div class="filtreTableInscriptions">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+      </mat-form-field>
+    </div>
+
+    <mat-table class="filtreTableInscriptions" #table [dataSource]="dataSourceInscriptions" matSort>
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id_inscription">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Réf. </mat-header-cell>
+        <mat-cell *matCellDef="let inscription"> {{inscription.id_inscription}} </mat-cell>
+      </ng-container>
+
+      <!-- Nom Column -->
+      <ng-container matColumnDef="nom_inscription">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Clef d'accès </mat-header-cell>
+        <mat-cell *matCellDef="let inscription"> {{inscription.nom_inscription}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_inscription}" (click)="highlight(row)"></mat-row>
+    </mat-table>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-primary" [disabled]="!selectedInscription" (click)="addInscriptionToMembre()">Confirmer</button>
+  <button class="mat-raised-button" (click)="closeDial()">Fermer</button>
+</mat-dialog-actions>

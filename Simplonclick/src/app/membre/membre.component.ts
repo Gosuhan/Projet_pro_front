@@ -13,6 +13,7 @@ import { MembreService } from '../membre.service';
 import { InscriptionService } from './../inscription.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Iinscription } from '../iinscription';
+import { InscriptionAuMembreComponent } from '../inscription-au-membre/inscription-au-membre.component';
 
 @Component({
   selector: 'app-membre',
@@ -27,14 +28,16 @@ export class MembreComponent implements OnInit {
   edition = false;
   edit = false;
   objectif = false;
-  inscription = false;
+  inscriptionBoolean = false;
   insc: Iinscription;
+  selectedInscription = false;
 
   constructor(
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private membreService: MembreService,
-    private inscriptionService: InscriptionService
+    private inscriptionService: InscriptionService,
+    public dialog: MatDialog
   ) {}
 
   displayedColumns = ['id_inscription', 'nom_inscription'];
@@ -168,6 +171,43 @@ export class MembreComponent implements OnInit {
           error => {this.afficherMessage('', 'Clef d\'accès déjà existante'); }
         );
     }
+  }
+
+  // addInscriptionToMembre() {
+  //   this.selectedInscription = false;
+  //   this.selectedRowIndex = -1;
+  //   const membre: Imembre = {
+  //     id_membre: this.memb.id_membre,
+  //     pseudo: this.memb.pseudo,
+  //     password: this.memb.password,
+  //     nom: this.memb.nom,
+  //     prenom: this.memb.prenom,
+  //     admin: this.memb.admin,
+  //     email: this.memb.email,
+  //     pseudo_slack: this.memb.pseudo_slack,
+  //     image: this.memb.image,
+  //     fonction: this.memb.fonction,
+  //     niveau_general: this.memb.niveau_general,
+  //     disponibilite_habituelle: this.memb.disponibilite_habituelle,
+  //     disponibilite_actuelle: this.memb.disponibilite_actuelle
+  //   };
+  //   const inscription: Iinscription = {
+  //     id_inscription: this.insc.id_inscription,
+  //     nom_inscription: this.insc.nom_inscription,
+  //     membre_id_membre: this.memb.id_membre // ???
+  //   };
+  //   this.inscriptionService.addInscriptionMembre(this.memb, this.insc).subscribe(
+  //     result => {this.afficherMessage('Enregistrement effectué', ''); },
+  //     error => {this.afficherMessage('', 'Inscription déjà présente'); }, // Ne fonctionne pas car
+  //     // ce n'est pas une création mais une modification (donc aucune erreur). A voir
+  //   );
+  // }
+
+  ajouterInscriptionAuMembre() {
+    this.dialog.open(InscriptionAuMembreComponent, {
+      width: '600px',
+      data: this.memb.id_membre
+    });
   }
 
   deleteInscriptionMembre(idInscription, idMembre) {

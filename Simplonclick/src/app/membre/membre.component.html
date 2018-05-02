@@ -18,8 +18,12 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button (click)="edit = !edit">{{edit? 'Informations à jour' : 'Mettre à jour mes informations'}}</button>
-        <button mat-raised-button (click)="objectif = !objectif">Mes Objectifs</button>
-        <button mat-raised-button (click)="inscription = !inscription">Inscriptions</button>
+        <br>
+        <br>
+        <button mat-raised-button (click)="inscriptionBoolean = !inscriptionBoolean">Gérer mes inscriptions</button>
+        <button mat-raised-button color="primary" (click)="objectif = !objectif">Mes Objectifs <mat-icon>timeline</mat-icon></button>
+        
+        
       </mat-card-actions>
     </mat-card>
     <br>
@@ -50,7 +54,7 @@
 </div>
 <br>
 
-<div *ngIf="inscription">
+<div *ngIf="inscriptionBoolean">
     <div>
         <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
@@ -84,8 +88,12 @@
             
             <br>
             <br>
-            <button mat-raised-button color="primary" type="submit" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Ajouter'}}</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Ajouter nouvelle clef d\'accès'}}</button>
         </form>
+
+        <br>
+        <button mat-raised-button (click)="ajouterInscriptionAuMembre()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Récupération de la clé d\'accès'}}</button>
+        <button mat-raised-button (click)="refreshTab()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Raffraichir'}}</button>
 
         <div *ngIf="edition">    
             <br>
