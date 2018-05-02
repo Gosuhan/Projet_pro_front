@@ -48,6 +48,13 @@ export class TypeInscriptionaInscriptionComponent implements OnInit {
 
   ngOnInit() {
     this.inscriptionService.getInscription(this.data).subscribe(inscription => this.inscription = inscription);
+
+    this.typeInscriptionService
+      .getTypesInscription()
+      .subscribe((data: ItypeInscription[]) => {
+        this.dataSourceTypesInscription = new MatTableDataSource(data);
+        this.dataSourceTypesInscription.sort = this.sort;
+      });
   }
 
   highlight(row) {
@@ -72,7 +79,6 @@ export class TypeInscriptionaInscriptionComponent implements OnInit {
       id_type_inscription: this.typeInscription.id_type_inscription,
       type_inscription: this.typeInscription.type_inscription
     };
-    // ATTENTION
     this.inscriptionService.addInscriptionTypeInscription(this.typeInscription, this.inscription).subscribe(
       result => {this.afficherMessage('Enregistrement effectué', ''); },
       error => {this.afficherMessage('', 'Type inscription déjà enregistré'); }, // Ne fonctionne pas car
@@ -86,10 +92,10 @@ export class TypeInscriptionaInscriptionComponent implements OnInit {
     });
   }
 
-  rechercher(recherche) {
-    this.typeInscriptionService.searchTypesInscription(recherche).subscribe((data: ItypeInscription[]) => {
-      this.dataSourceTypesInscription = new MatTableDataSource(data);
-      this.dataSourceTypesInscription.sort = this.sort;
-    });
-  }
+  // rechercher(recherche) {
+  //   this.typeInscriptionService.searchTypesInscription(recherche).subscribe((data: ItypeInscription[]) => {
+  //     this.dataSourceTypesInscription = new MatTableDataSource(data);
+  //     this.dataSourceTypesInscription.sort = this.sort;
+  //   });
+  // }
 }
