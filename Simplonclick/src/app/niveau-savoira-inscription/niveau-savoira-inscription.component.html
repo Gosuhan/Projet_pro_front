@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Choisissez le niveau recherché</h2>
+
+<mat-dialog-content>
+
+  <div *ngIf="dataSourceNiveauxSavoir.data.length>0">
+    <!-- <div class="filtreTableNiveauxSavoir">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+      </mat-form-field>
+    </div> -->
+
+    <mat-table class="filtreTableNiveauxSavoir" #table [dataSource]="dataSourceNiveauxSavoir" matSort>
+
+      <!-- Nom Column -->
+      <ng-container matColumnDef="niveau_savoir">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let niveauSavoir" class="textcenter"> {{niveauSavoir.niveau_savoir}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_niveau_savoir}" (click)="highlight(row)"></mat-row>
+    </mat-table>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-primary" [disabled]="!selectedNiveauSavoir" (click)="addNiveauSavoirToInscription()">Confirmer</button>
+  <button class="mat-raised-button" (click)="closeDial()">Fermer</button>
+</mat-dialog-actions>

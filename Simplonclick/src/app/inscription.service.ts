@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { Imembre } from './imembre';
 import { tap } from 'rxjs/operators';
 import { ItypeInscription } from './itype-inscription';
+import { Isavoir } from './isavoir';
+import { IniveauSavoir } from './iniveau-savoir';
 
 @Injectable()
 export class InscriptionService {
@@ -45,6 +47,16 @@ export class InscriptionService {
   addInscriptionTypeInscription(typeInscription: ItypeInscription, inscription: Iinscription): Observable<Iinscription> {
     // tslint:disable-next-line:max-line-length
     return this.api.addInscriptionTypeInscription(typeInscription.id_type_inscription, inscription.id_inscription, inscription) as Observable<Iinscription>;
+  }
+
+  addInscriptionSavoir(savoir: Isavoir, inscription: Iinscription): Observable<Iinscription> {
+    // tslint:disable-next-line:max-line-length
+    return this.api.addInscriptionSavoir(savoir.id_savoir, inscription.id_inscription, inscription) as Observable<Iinscription>;
+  }
+
+  addInscriptionNiveauSavoir(niveauSavoir: IniveauSavoir, inscription: Iinscription): Observable<Iinscription> {
+    // tslint:disable-next-line:max-line-length
+    return this.api.addInscriptionNiveauSavoir(niveauSavoir.id_niveau_savoir, inscription.id_inscription, inscription) as Observable<Iinscription>;
   }
 
 }

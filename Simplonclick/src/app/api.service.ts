@@ -8,6 +8,7 @@ import { Isavoir } from './isavoir';
 import { Iressource } from './iressource';
 import { Iinscription } from './iinscription';
 import { ItypeInscription } from './itype-inscription';
+import { IniveauSavoir } from './iniveau-savoir';
 
 @Injectable()
 export class ApiService {
@@ -181,6 +182,22 @@ export class ApiService {
 
   addInscriptionTypeInscription(idTypeInscription, idInscription, inscription: Iinscription) {
     return this.http.put<Iinscription>(`${this.URL}/type-inscription/${idTypeInscription}/addinscription/${idInscription}`, inscription);
+  }
+
+  addInscriptionSavoir(idSavoir, idInscription, inscription: Iinscription) {
+    return this.http.put<Iinscription>(`${this.URL}/savoir/${idSavoir}/addinscription/${idInscription}`, inscription);
+  }
+
+  getNiveauxSavoir() {
+    return this.http.get<IniveauSavoir[]>(`${this.URL}/niveaux-savoir`);
+  }
+
+  getNiveauSavoir(id) {
+    return this.http.get<IniveauSavoir>(`${this.URL}/niveau-savoir/${id}`);
+  }
+
+  addInscriptionNiveauSavoir(idNiveauSavoir, idInscription, inscription: Iinscription) {
+    return this.http.put<Iinscription>(`${this.URL}/niveau-savoir/${idNiveauSavoir}/addinscription/${idInscription}`, inscription);
   }
 
 }

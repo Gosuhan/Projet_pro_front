@@ -1,3 +1,4 @@
+import { SavoiraInscriptionComponent } from './../savoira-inscription/savoira-inscription.component';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import {
   MatTableDataSource,
@@ -16,6 +17,7 @@ import { Iinscription } from '../iinscription';
 import { InscriptionAuMembreComponent } from '../inscription-au-membre/inscription-au-membre.component';
 import { ItypeInscription } from '../itype-inscription';
 import { TypeInscriptionaInscriptionComponent } from '../type-inscriptiona-inscription/type-inscriptiona-inscription.component';
+import { NiveauSavoiraInscriptionComponent } from '../niveau-savoira-inscription/niveau-savoira-inscription.component';
 
 @Component({
   selector: 'app-membre',
@@ -206,15 +208,29 @@ export class MembreComponent implements OnInit {
   //   );
   // }
 
-  ajouterInscriptionAuMembre() {
+  addInscriptionAuMembre() {
     this.dialog.open(InscriptionAuMembreComponent, {
       width: '600px',
       data: this.memb.id_membre
     });
   }
 
-  ajouterTypeInscriptionaInscription() {
+  addTypeInscriptionaInscription() {
     this.dialog.open(TypeInscriptionaInscriptionComponent, {
+      width: '600px',
+      data: this.insc.id_inscription
+    });
+  }
+
+  addSavoiraInscription() {
+    this.dialog.open(SavoiraInscriptionComponent, {
+      width: '600px',
+      data: this.insc.id_inscription
+    });
+  }
+
+  addNiveauSavoiraInscription() {
+    this.dialog.open(NiveauSavoiraInscriptionComponent, {
       width: '600px',
       data: this.insc.id_inscription
     });

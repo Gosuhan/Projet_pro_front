@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Choisissez un type d'inscription</h2>
+<h2 mat-dialog-title>Choisissez votre sujet</h2>
 
 <mat-dialog-content>
 
@@ -9,29 +9,29 @@
     <button mat-raised-button (click)="rechercher(recherche.value)"><mat-icon>search</mat-icon></button>
   </div> -->
 
-  <div *ngIf="dataSourceTypesInscription.data.length>0">
-    <!-- <div class="filtreTableTypesInscriptions">
+  <div *ngIf="dataSourceSavoirs.data.length>0">
+    <div class="filtreTableSavoirs">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
       </mat-form-field>
-    </div> -->
+    </div>
 
-    <mat-table class="filtreTableTypesInscription" #table [dataSource]="dataSourceTypesInscription" matSort>
+    <mat-table class="filtreTableSavoirs" #table [dataSource]="dataSourceSavoirs" matSort>
 
       <!-- Nom Column -->
-      <ng-container matColumnDef="type_inscription">
+      <ng-container matColumnDef="nom_savoir">
         <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let typeInscription" class="textcenter"> {{typeInscription.type_inscription}} </mat-cell>
+        <mat-cell *matCellDef="let savoir" class="textcenter"> {{savoir.nom_savoir}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_type_inscription}" (click)="highlight(row)"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_savoir}" (click)="highlight(row)"></mat-row>
     </mat-table>
   </div>
 
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button mat-primary" [disabled]="!selectedTypeInscription" (click)="addTypeInscriptionToInscription()">Confirmer</button>
+  <button class="mat-raised-button mat-primary" [disabled]="!selectedSavoir" (click)="addSavoirToInscription()">Confirmer</button>
   <button class="mat-raised-button" (click)="closeDial()">Fermer</button>
 </mat-dialog-actions>

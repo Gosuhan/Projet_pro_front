@@ -61,6 +61,9 @@ import { MembreDeSavoirComponent } from './membre-de-savoir/membre-de-savoir.com
 import { InscriptionAuMembreComponent } from './inscription-au-membre/inscription-au-membre.component';
 import { TypeInscriptionService } from './type-inscription.service';
 import { TypeInscriptionaInscriptionComponent } from './type-inscriptiona-inscription/type-inscriptiona-inscription.component';
+import { SavoiraInscriptionComponent } from './savoira-inscription/savoira-inscription.component';
+import { NiveauSavoiraInscriptionComponent } from './niveau-savoira-inscription/niveau-savoira-inscription.component';
+import { NiveauSavoirService } from './niveau-savoir.service';
 
 @NgModule({
   declarations: [
@@ -88,7 +91,9 @@ import { TypeInscriptionaInscriptionComponent } from './type-inscriptiona-inscri
     InscriptionComponent,
     MembreDeSavoirComponent,
     InscriptionAuMembreComponent,
-    TypeInscriptionaInscriptionComponent
+    TypeInscriptionaInscriptionComponent,
+    SavoiraInscriptionComponent,
+    NiveauSavoiraInscriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +131,8 @@ import { TypeInscriptionaInscriptionComponent } from './type-inscriptiona-inscri
     RessourceService,
     CategorieSavoirService,
     InscriptionService,
-    TypeInscriptionService
+    TypeInscriptionService,
+    NiveauSavoirService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -136,7 +142,9 @@ import { TypeInscriptionaInscriptionComponent } from './type-inscriptiona-inscri
     SavoiraCategorieSavoirComponent,
     MembreDeSavoirComponent,
     InscriptionAuMembreComponent,
-    TypeInscriptionaInscriptionComponent
+    TypeInscriptionaInscriptionComponent,
+    SavoiraInscriptionComponent,
+    NiveauSavoiraInscriptionComponent
   ]
 })
 export class AppModule { }
