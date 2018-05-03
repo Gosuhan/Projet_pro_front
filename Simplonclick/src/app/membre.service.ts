@@ -37,6 +37,38 @@ export class MembreService {
     return this.api.deleteMembre(id).pipe(tap(data => this.update$.next()));
   }
 
+  getMembresPasseursSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresPasseursSavoir(id) as Observable<Imembre[]>;
+  }
+
+  getMembresPasseursDebutantsSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresPasseursDebutantsSavoir(id) as Observable<Imembre[]>;
+  }
+
+  getMembresPasseursIntermediairesSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresPasseursIntermediairesSavoir(id) as Observable<Imembre[]>;
+  }
+
+  getMembresPasseursConfirmesSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresPasseursConfirmesSavoir(id) as Observable<Imembre[]>;
+  }
+
+  getMembresReceveursSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresReceveursSavoir(id) as Observable<Imembre[]>;
+  }
+
+  getMembresReceveursDebutantsSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresReceveursDebutantsSavoir(id) as Observable<Imembre[]>;
+  }
+
+  getMembresReceveursIntermediairesSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresReceveursIntermediairesSavoir(id) as Observable<Imembre[]>;
+  }
+
+  getMembresReceveursConfirmesSavoir(id): Observable<Imembre[]> {
+    return this.api.getMembresReceveursConfirmesSavoir(id) as Observable<Imembre[]>;
+  }
+
   getMembresSavoir(id): Observable<Imembre[]> {
     return this.api.getMembresSavoir(id) as Observable<Imembre[]>;
   }

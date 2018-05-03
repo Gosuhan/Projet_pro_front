@@ -39,12 +39,12 @@
               <mat-tab-group>
                 <mat-tab label="Mes besoins">
                   <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
-                            {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                            {{inscription.type_inscription.type_inscription === "Passeur" ? "" : inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")"}}
                   </div>
                 </mat-tab>
                 <mat-tab label="Mes connaissances">
                     <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
-                            {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                            {{inscription.type_inscription.type_inscription === "Receveur" ? "" : inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")"}}
                     </div> 
                 </mat-tab>
               </mat-tab-group>
@@ -92,19 +92,19 @@
         </form>
 
         <br>
-        <button mat-raised-button color="primary" (click)="addInscriptionAuMembre()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Importation de l\'inscription'}}</button>
+        <button mat-raised-button color="primary" (click)="addInscriptionAuMembre()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Importer mes inscriptions'}}</button>
         <button mat-raised-button (click)="refreshTab()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Mise à jour'}}</button>
 
         <br>
-        <button mat-raised-button color="primary" (click)="addTypeInscriptionaInscription()" [disabled]="!inscriptionForm.valid">{{edition ? 'Choix du type d\'inscription' : ''}}</button>
+        <button mat-raised-button color="primary" (click)="addTypeInscriptionaInscription()" [disabled]="!inscriptionForm.valid">{{edition ? 'Type d\'inscription' : ''}}</button>
         
         <br>
         <br>
-        <button mat-raised-button color="primary" (click)="addSavoiraInscription()" [disabled]="!inscriptionForm.valid">{{edition ? 'Choix du savoir' : ''}}</button>
+        <button mat-raised-button color="primary" (click)="addSavoiraInscription()" [disabled]="!inscriptionForm.valid">{{edition ? 'Sujet' : ''}}</button>
 
         <br>
         <br>
-        <button mat-raised-button color="primary" (click)="addNiveauSavoiraInscription()" [disabled]="!inscriptionForm.valid">{{edition ? 'Choix du niveau de connaissances' : ''}}</button>
+        <button mat-raised-button color="primary" (click)="addNiveauSavoiraInscription()" [disabled]="!inscriptionForm.valid">{{edition ? 'Niveau de connaissances' : ''}}</button>
 
         <div *ngIf="edition">    
             <br>

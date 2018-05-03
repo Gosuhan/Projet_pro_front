@@ -142,6 +142,38 @@ export class ApiService {
     return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres`);
   }
 
+  getMembresPasseursSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres-passeurs`);
+  }
+
+  getMembresPasseursDebutantsSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres-passeurs-debutants`);
+  }
+
+  getMembresPasseursIntermediairesSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres-passeurs-intermediaires`);
+  }
+
+  getMembresPasseursConfirmesSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres-passeurs-confirmes`);
+  }
+
+  getMembresReceveursSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres-receveurs`);
+  }
+
+  getMembresReceveursDebutantsSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres-receveurs-debutants`);
+  }
+
+  getMembresReceveursIntermediairesSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres-receveurs-intermediaires`);
+  }
+
+  getMembresReceveursConfirmesSavoir(id) {
+    return this.http.get<Imembre[]>(`${this.URL}/savoir/${id}/membres-receveurs-confirmes`);
+  }
+
   getInscriptionsMembre(id) {
     return this.http.get<Iinscription[]>(`${this.URL}/membre/${id}/inscriptions`);
   }

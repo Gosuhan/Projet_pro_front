@@ -1,17 +1,47 @@
 <mat-card>
   <mat-card-content>
-    <h2>Demandes</h2>
+    <h2>Inscriptions</h2>
     <mat-tab-group>
-      <mat-tab label="Demande de soutien">
-        <div *ngFor="let membre of membres" class="textcenter">
+        <mat-tab label="Passeurs">
+          <div *ngFor="let membre of membresPasseurs" class="textcenter">
+            {{membre.nom}}
+                <!-- {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} *** Nécessite let membre of membres-->
+          </div>
+        </mat-tab>
+      <mat-tab label="Passeurs (niveau Débutant)">
+        <div *ngFor="let membre of membresPasseursDebutants" class="textcenter">
           {{membre.nom}}
-              <!-- {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} -->
         </div>
       </mat-tab>
-      <mat-tab label="Offre de soutien">
-        <div *ngFor="let membre of membres" class="textcenter">
+      <mat-tab label="Passeurs (niveau Intermédiaire)">
+        <div *ngFor="let membre of membresPasseursIntermediaires" class="textcenter">
+          {{membre.nom}}
+        </div>
+      </mat-tab>
+      <mat-tab label="Passeurs (niveau Confirmé)">
+        <div *ngFor="let membre of membresPasseursConfirmes" class="textcenter">
+          {{membre.nom}}
+        </div>
+      </mat-tab>
+      <mat-tab label="Receveurs">
+        <div *ngFor="let membre of membresReceveurs" class="textcenter">
             {{membre.nom}}
-            <!-- {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} -->
+            <!-- {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} *** Nécessite let membre of membres-->
+        </div> 
+      </mat-tab>
+      <mat-tab label="Receveurs (niveau Débutants)">
+        <div *ngFor="let membre of membresReceveursDebutants" class="textcenter">
+            {{membre.nom}}
+        </div> 
+      </mat-tab>
+      <mat-tab label="Receveurs (niveau Intermédiaire)">
+        <div *ngFor="let membre of membresReceveursIntermediaires" class="textcenter">
+            {{membre.nom}}
+        </div> 
+      </mat-tab>
+      <mat-tab label="Receveurs (niveau Confirmé)">
+        <div *ngFor="let membre of membresReceveursConfirmes" class="textcenter">
+            {{membre.nom}}
         </div> 
       </mat-tab>
     </mat-tab-group>
