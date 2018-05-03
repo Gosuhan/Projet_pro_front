@@ -17,9 +17,14 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_savoir}" (click)="highlight(row)"></mat-row>
   </mat-table>
 </div>
-<br>
-<br>
-<button mat-raised-button color="primary" (click)="membresDeSavoir()">Inscriptions liées à ce savoir <mat-icon>keyboard_arrow_right</mat-icon></button>
+<div *ngIf="edition">
+  <br>
+  <br>
+  <button mat-raised-button color="primary" (click)="membresDeSavoir()">Liste des Membres inscrits pour ce Sujet<mat-icon>keyboard_arrow_right</mat-icon></button>
+  <br>
+  <br>
+  <button class="mat-raised-button mat-primary" (click)="ressourcesDuSavoir()">Ressources liées à ce Sujet</button>
+</div>
 
   <br>
   <br>
@@ -27,20 +32,19 @@
 
   <br>
   <mat-form-field class="inputFullWidth">
-      <input matInput placeholder="Nom" required name="nom_savoir" [(ngModel)]="sav.nom_savoir">
+      <input matInput placeholder="Nouveau Sujet" required name="nom_savoir" [(ngModel)]="sav.nom_savoir">
   </mat-form-field>
 
   <br>
   <br>
-  <button mat-raised-button color="primary" type="submit" [disabled]="!savoirForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+  <button mat-raised-button type="submit" [disabled]="!savoirForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
 </form>
 
 <div *ngIf="edition">
   <br>
-  <button mat-raised-button (click)="ajouterRessourceAuSavoir()">Ajouter une ressource à ce Savoir</button>
-  <button class="mat-raised-button mat-primary" (click)="ressourcesDuSavoir()">Ressources enregistrées</button>
-  <br>
+  <button mat-raised-button color="primary" (click)="ajouterRessourceAuSavoir()">Ajouter une ressource à ce Sujet</button>
 
+  <br>
   <br>
   <button mat-raised-button (click)="cancelSelect()">Annuler</button>
 

@@ -49,6 +49,11 @@ export class SavoiraCategorieSavoirComponent implements OnInit {
 
   ngOnInit() {
     this.categorieSavoirService.getCategorieSavoir(this.data).subscribe(categorieSavoir => this.categorieSavoir = categorieSavoir);
+
+    this.savoirService.getSavoirs().subscribe((data: Isavoir[]) => {
+      this.dataSourceSavoirs = new MatTableDataSource(data);
+      this.dataSourceSavoirs.sort = this.sort;
+    });
   }
 
   highlight(row) {
@@ -86,10 +91,10 @@ export class SavoiraCategorieSavoirComponent implements OnInit {
     });
   }
 
-  rechercher(recherche) {
-    this.savoirService.searchSavoirs(recherche).subscribe((data: Isavoir[]) => {
-      this.dataSourceSavoirs = new MatTableDataSource(data);
-      this.dataSourceSavoirs.sort = this.sort;
-    });
-  }
+//   rechercher(recherche) {
+//     this.savoirService.searchSavoirs(recherche).subscribe((data: Isavoir[]) => {
+//       this.dataSourceSavoirs = new MatTableDataSource(data);
+//       this.dataSourceSavoirs.sort = this.sort;
+//     });
+//   }
 }

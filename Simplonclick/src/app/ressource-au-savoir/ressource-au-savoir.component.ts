@@ -48,6 +48,11 @@ export class RessourceAuSavoirComponent implements OnInit {
 
   ngOnInit() {
     this.savoirService.getSavoir(this.data).subscribe(savoir => this.savoir = savoir);
+
+    this.ressourceService.getRessources().subscribe((data: Iressource[]) => {
+      this.dataSourceRessources = new MatTableDataSource(data);
+      this.dataSourceRessources.sort = this.sort;
+    });
   }
 
   highlight(row) {
@@ -87,10 +92,10 @@ export class RessourceAuSavoirComponent implements OnInit {
     });
   }
 
-  rechercher(recherche) {
-    this.ressourceService.searchRessources(recherche).subscribe((data: Iressource[]) => {
-      this.dataSourceRessources = new MatTableDataSource(data);
-      this.dataSourceRessources.sort = this.sort;
-    });
-  }
+  // rechercher(recherche) {
+  //   this.ressourceService.searchRessources(recherche).subscribe((data: Iressource[]) => {
+  //     this.dataSourceRessources = new MatTableDataSource(data);
+  //     this.dataSourceRessources.sort = this.sort;
+  //   });
+  // }
 }

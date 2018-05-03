@@ -1,7 +1,8 @@
 <mat-card>
   <mat-card-content>
     <h2>Inscriptions</h2>
-    <mat-tab-group>
+    <ng-template #ressourceVide>Aucune inscription n'est enregistrée à ce jour</ng-template>
+    <mat-tab-group *ngIf="test(); else ressourceVide">
         <mat-tab label="Passeurs">
           <div *ngFor="let membre of membresPasseurs" class="textcenter">
             {{membre.nom}}
