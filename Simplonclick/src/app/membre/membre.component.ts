@@ -172,9 +172,17 @@ export class MembreComponent implements OnInit {
       this.inscriptionService
         .addInscription(this.insc)
         .subscribe(
-          result => {this.afficherMessage('Clef d\'accès enregistrée', ''); },
+          result => {this.afficherMessage('Inscription enregistrée', ''); },
           error => {this.afficherMessage('', 'Clef d\'accès déjà existante'); }
         );
+        // this.dialog.open(InscriptionAuMembreComponent, {
+        //   width: '600px',
+        //   data: this.memb.id_membre
+        // });
+        // this.inscriptionService.addInscriptionMembre(this.memb, this.insc).subscribe(
+        //   result => {this.afficherMessage('Clef d\'accès acceptée', ''); },
+        //   error => {this.afficherMessage('', 'Clef d\'accès déjà utilisée'); }
+        // );
     }
   }
 

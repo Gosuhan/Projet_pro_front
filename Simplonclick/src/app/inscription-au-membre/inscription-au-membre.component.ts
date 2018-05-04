@@ -84,7 +84,7 @@ export class InscriptionAuMembreComponent implements OnInit {
       membre_id_membre: this.membre.id_membre // ???
     };
     this.inscriptionService.addInscriptionMembre(this.membre, this.inscription).subscribe(
-      result => {this.afficherMessage('Clef d\'accès acceptée', ''); },
+      result => {this.afficherMessage('Inscription importée', ''); },
       error => {this.afficherMessage('', 'Clef d\'accès déjà utilisée'); }, // Ne fonctionne pas car
       // ce n'est pas une création mais une modification (donc aucune erreur). A voir
     );
