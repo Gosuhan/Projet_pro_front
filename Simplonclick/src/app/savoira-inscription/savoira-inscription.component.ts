@@ -80,8 +80,8 @@ export class SavoiraInscriptionComponent implements OnInit {
       categorie_savoir_id_categorie_savoir: this.savoir.categorie_savoir_id_categorie_savoir
     };
     this.inscriptionService.addInscriptionSavoir(this.savoir, this.inscription).subscribe(
-      result => {this.afficherMessage('Enregistrement effectué', ''); },
-      error => {this.afficherMessage('', 'Savoir déjà enregistré'); }, // Ne fonctionne pas car
+      result => {this.afficherMessage('Sujet souhaité enregistré', ''); },
+      error => {this.afficherMessage('', 'Sujet déjà enregistré'); }, // Ne fonctionne pas car
       // ce n'est pas une création mais une modification (donc aucune erreur). A voir
     );
   }

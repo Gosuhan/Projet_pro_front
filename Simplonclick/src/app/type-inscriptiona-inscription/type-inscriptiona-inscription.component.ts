@@ -80,7 +80,7 @@ export class TypeInscriptionaInscriptionComponent implements OnInit {
       type_inscription: this.typeInscription.type_inscription
     };
     this.inscriptionService.addInscriptionTypeInscription(this.typeInscription, this.inscription).subscribe(
-      result => {this.afficherMessage('Enregistrement effectué', ''); },
+      result => {this.afficherMessage('Type d\'inscription enregistré', ''); },
       error => {this.afficherMessage('', 'Type inscription déjà enregistré'); }, // Ne fonctionne pas car
       // ce n'est pas une création mais une modification (donc aucune erreur). A voir
     );

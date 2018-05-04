@@ -79,7 +79,7 @@ export class NiveauSavoiraInscriptionComponent implements OnInit {
       niveau_savoir: this.niveauSavoir.niveau_savoir,
     };
     this.inscriptionService.addInscriptionNiveauSavoir(this.niveauSavoir, this.inscription).subscribe(
-      result => {this.afficherMessage('Enregistrement effectué', ''); },
+      result => {this.afficherMessage('Niveau souhaité enregistré', ''); },
       error => {this.afficherMessage('', 'NiveauSavoir déjà enregistré'); }, // Ne fonctionne pas car
       // ce n'est pas une création mais une modification (donc aucune erreur). A voir
     );
