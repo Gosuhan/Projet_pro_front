@@ -192,6 +192,10 @@ export class ApiService {
     }
   }
 
+  deleteInscription(id) {
+    return this.http.delete<any>(`${this.URL}/inscription/${id}`);
+  }
+
   addInscriptionMembre(idMembre, idInscription, inscription: Iinscription) {
     return this.http.put<Iinscription>(`${this.URL}/membre/${idMembre}/addinscription/${idInscription}`, inscription);
   }

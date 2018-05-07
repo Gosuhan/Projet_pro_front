@@ -172,49 +172,17 @@ export class MembreComponent implements OnInit {
       this.inscriptionService
         .addInscription(this.insc)
         .subscribe(
-          result => {this.afficherMessage('Inscription enregistrée', ''); },
-          error => {this.afficherMessage('', 'Clef d\'accès déjà existante'); }
-        );
-        // this.dialog.open(InscriptionAuMembreComponent, {
-        //   width: '600px',
-        //   data: this.memb.id_membre
-        // });
-        // this.inscriptionService.addInscriptionMembre(this.memb, this.insc).subscribe(
-        //   result => {this.afficherMessage('Clef d\'accès acceptée', ''); },
-        //   error => {this.afficherMessage('', 'Clef d\'accès déjà utilisée'); }
-        // );
+          result => {
+            this.insc.id_inscription = result.id_inscription;
+            this.inscriptionService.addInscriptionMembre(this.memb, this.insc).subscribe(
+              succes => {
+                this.refreshTab();
+                this.afficherMessage('Inscription enregistrée', ''); },
+              error => {this.afficherMessage('', 'Erreur'); }
+            );
+          });
     }
   }
-
-  // addInscriptionToMembre() {
-  //   this.selectedInscription = false;
-  //   this.selectedRowIndex = -1;
-  //   const membre: Imembre = {
-  //     id_membre: this.memb.id_membre,
-  //     pseudo: this.memb.pseudo,
-  //     password: this.memb.password,
-  //     nom: this.memb.nom,
-  //     prenom: this.memb.prenom,
-  //     admin: this.memb.admin,
-  //     email: this.memb.email,
-  //     pseudo_slack: this.memb.pseudo_slack,
-  //     image: this.memb.image,
-  //     fonction: this.memb.fonction,
-  //     niveau_general: this.memb.niveau_general,
-  //     disponibilite_habituelle: this.memb.disponibilite_habituelle,
-  //     disponibilite_actuelle: this.memb.disponibilite_actuelle
-  //   };
-  //   const inscription: Iinscription = {
-  //     id_inscription: this.insc.id_inscription,
-  //     nom_inscription: this.insc.nom_inscription,
-  //     membre_id_membre: this.memb.id_membre // ???
-  //   };
-  //   this.inscriptionService.addInscriptionMembre(this.memb, this.insc).subscribe(
-  //     result => {this.afficherMessage('Enregistrement effectué', ''); },
-  //     error => {this.afficherMessage('', 'Inscription déjà présente'); }, // Ne fonctionne pas car
-  //     // ce n'est pas une création mais une modification (donc aucune erreur). A voir
-  //   );
-  // }
 
   addInscriptionAuMembre() {
     this.dialog.open(InscriptionAuMembreComponent, {
@@ -244,27 +212,37 @@ export class MembreComponent implements OnInit {
     });
   }
 
-  deleteInscriptionMembre(idInscription, idMembre) {
-    const membre: Imembre = {
-      id_membre: this.memb.id_membre,
-      pseudo: this.memb.pseudo,
-      password: this.memb.password,
-      nom: this.memb.nom,
-      prenom: this.memb.prenom,
-      admin: this.memb.admin,
-      email: this.memb.email,
-      pseudo_slack: this.memb.pseudo_slack,
-      image: this.memb.image,
-      fonction: this.memb.fonction,
-      niveau_general: this.memb.niveau_general,
-      disponibilite_habituelle: this.memb.disponibilite_habituelle,
-      disponibilite_actuelle: this.memb.disponibilite_actuelle
-    };
-    const inscription: Iinscription = {
-      id_inscription: idInscription,
-      membre_id_membre: idMembre
-    };
-    this.inscriptionService.deleteInscriptionMembre(membre, inscription).subscribe(succes => this.refreshTab());
+  // deleteInscriptionMembre(idInscription, idMembre) {
+  //   const membre: Imembre = {
+  //     id_membre: this.memb.id_membre,
+  //     pseudo: this.memb.pseudo,
+  //     password: this.memb.password,
+  //     nom: this.memb.nom,
+  //     prenom: this.memb.prenom,
+  //     admin: this.memb.admin,
+  //     email: this.memb.email,
+  //     pseudo_slack: this.memb.pseudo_slack,
+  //     image: this.memb.image,
+  //     fonction: this.memb.fonction,
+  //     niveau_general: this.memb.niveau_general,
+  //     disponibilite_habituelle: this.memb.disponibilite_habituelle,
+  //     disponibilite_actuelle: this.memb.disponibilite_actuelle
+  //   };
+  //   const inscription: Iinscription = {
+  //     id_inscription: idInscription,
+  //     membre_id_membre: idMembre
+  //   };
+  //   this.inscriptionService.deleteInscriptionMembre(membre, inscription).subscribe(succes => this.refreshTab());
+  // }
+
+  deleteInscription() {
+    this.edition = false;
+    this.inscriptionService
+      .deleteInscription(this.insc.id_inscription)
+      .subscribe(
+        result => {this.afficherMessage('Suppression effectuée', ''); }
+      );
+    this.clearInputInsc();
   }
 
   clearInputInsc() {

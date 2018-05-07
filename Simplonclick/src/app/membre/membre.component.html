@@ -20,14 +20,12 @@
         <button mat-raised-button (click)="edit = !edit">{{edit? 'Informations à jour' : 'Mettre à jour mes informations'}}</button>
         <br>
         <br>
-        <button mat-raised-button (click)="inscriptionBoolean = !inscriptionBoolean">Gérer mes inscriptions</button>
+        <button mat-raised-button (click)="inscriptionBoolean = !inscriptionBoolean">Gérer mes inscriptions <mat-icon>{{inscriptionBoolean ? "keyboard_arrow_up" : "keyboard_arrow_down"}}</mat-icon></button>
         <button mat-raised-button color="primary" (click)="objectif = !objectif">Mes Objectifs <mat-icon>timeline</mat-icon></button>
         
         
       </mat-card-actions>
     </mat-card>
-    <br>
-    <br>
 </div>
 
 <br>
@@ -71,7 +69,7 @@
 
             <!-- Nom Column -->
             <ng-container matColumnDef="nom_inscription">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Commentaire (Clef d'accès) </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Commentaire </mat-header-cell>
                     <mat-cell *matCellDef="let inscription"> {{inscription.nom_inscription}} </mat-cell>
                     </ng-container>
         
@@ -83,7 +81,7 @@
 
             <br>
             <mat-form-field class="inputFullWidth">
-                <input matInput placeholder="Nouvelle inscription (Clef)" required name="nom_inscription" [(ngModel)]="insc.nom_inscription">
+                <input matInput placeholder="Commentaire (nouvelle inscription)" required name="nom_inscription" [(ngModel)]="insc.nom_inscription">
             </mat-form-field>
             
             <br>
@@ -91,9 +89,12 @@
             <button mat-raised-button color="primary" type="submit" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Nouvelle inscription'}}</button>
         </form>
 
-        <br>
+        <!-- <br>
         <button mat-raised-button color="primary" (click)="addInscriptionAuMembre()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Importer mes inscriptions'}}</button>
-        <button mat-raised-button (click)="refreshTab()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Mise à jour'}}</button>
+        <button mat-raised-button (click)="refreshTab()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Mise à jour'}}</button> -->
+
+        <br>
+        <button *ngIf="!edition" mat-raised-button (click)="cancelSelectInsc()">Annuler</button>
 
         <br>
         <button mat-raised-button color="primary" (click)="addTypeInscriptionaInscription()" [disabled]="!inscriptionForm.valid">{{edition ? 'Type d\'inscription' : ''}}</button>
@@ -112,17 +113,18 @@
 
             <br>
             <br>
-            <button mat-raised-button class="buttonColorBlack" (click)="deleteInscriptionMembre(insc.id_inscription, insc.membre_id_membre)">Supprimer cette inscription</button>
+            <button mat-raised-button class="buttonColorBlack" (click)="deleteInscription(insc.id_inscription)">Supprimer cette inscription</button>
+            <br>
             <br>
         </div>
     </div>
 <br>
 
 <div *ngIf="edit">
-  <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
+  <!-- <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
 
   <br>
-  <br>
+  <br> -->
   <mat-slide-toggle name="disponibilite_actuelle" [(ngModel)]="memb.disponibilite_actuelle">{{memb.disponibilite_actuelle ? 'Disponible' : 'Non disponible'}}</mat-slide-toggle>
 
   <br>
@@ -134,7 +136,7 @@
 
   <br>
     <mat-form-field class="inputFullWidth">
-        <input matInput placeholder="Lien image" name="image" [(ngModel)]="memb.image">
+        <input matInput placeholder="Lien Avatar" name="image" [(ngModel)]="memb.image">
     </mat-form-field>
 
   <br>
