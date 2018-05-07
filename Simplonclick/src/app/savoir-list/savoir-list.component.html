@@ -5,11 +5,11 @@
     </mat-form-field>
   </div>
 
-  <mat-table #table [dataSource]="dataSourceSavoir" matSort>
+  <mat-table class="textalign" #table [dataSource]="dataSourceSavoir" matSort>
 
     <!-- Nom Column -->
     <ng-container matColumnDef="nom_savoir">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Sujet(s) </mat-header-cell>
       <mat-cell *matCellDef="let savoir"> {{savoir.nom_savoir}} </mat-cell>
     </ng-container>
 
@@ -20,10 +20,10 @@
 <div *ngIf="edition">
   <br>
   <br>
-  <button mat-raised-button color="primary" (click)="membresDeSavoir()">Liste des Membres inscrits pour ce Sujet<mat-icon>keyboard_arrow_right</mat-icon></button>
+  <button mat-raised-button color="primary" (click)="membresDeSavoir()"><mat-icon>supervisor_account</mat-icon> Membres inscrits pour ce Sujet</button>
   <br>
   <br>
-  <button class="mat-raised-button mat-primary" (click)="ressourcesDuSavoir()">Ressources liées à ce Sujet</button>
+  <button mat-raised-button color="primary" (click)="ressourcesDuSavoir()"><mat-icon>device_hub</mat-icon> Ressources liées à ce Sujet</button>
 </div>
 
   <br>
@@ -37,12 +37,12 @@
 
   <br>
   <br>
-  <button mat-raised-button type="submit" [disabled]="!savoirForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+  <button mat-raised-button type="submit" [disabled]="!savoirForm.valid"><mat-icon>mode_edit</mat-icon> {{edition ? 'Modifier' : 'Ajouter'}}</button>
 </form>
 
 <div *ngIf="edition">
   <br>
-  <button mat-raised-button color="primary" (click)="ajouterRessourceAuSavoir()">Ajouter une ressource à ce Sujet</button>
+  <button mat-raised-button color="primary" (click)="ajouterRessourceAuSavoir()"><mat-icon>fiber_new</mat-icon> Ajouter une ressource à ce Sujet</button>
 
   <br>
   <br>
@@ -50,6 +50,6 @@
 
   <br>
   <br>
-  <button mat-raised-button class="buttonColorBlack" (click)="deleteSavoir()">Supprimer ce savoir</button>
+  <button mat-raised-button class="buttonColorBlack" (click)="deleteSavoir()"><mat-icon>warning</mat-icon> Supprimer ce savoir</button>
   <br>
 </div>

@@ -5,7 +5,7 @@
       </mat-form-field>
     </div>
   
-    <mat-table #table [dataSource]="dataSourceCategorieSavoir" matSort>
+    <mat-table class="textalign" #table [dataSource]="dataSourceCategorieSavoir" matSort>
   
       <!-- Nom Column -->
       <ng-container matColumnDef="nom_categorie_savoir">
@@ -29,13 +29,13 @@
   
     <br>
     <br>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!categorieSavoirForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!categorieSavoirForm.valid"><mat-icon>mode_edit</mat-icon> {{edition ? 'Modifier' : 'Ajouter'}}</button>
   </form>
   
   <div *ngIf="edition">
     <br>
-    <button mat-raised-button (click)="ajouterSavoiraCategorieSavoir()">Ajouter un savoir à cette Catégorie</button>
-    <button class="mat-raised-button mat-primary" (click)="savoirsDeCategorieSavoir()">Savoirs enregistrés</button>
+    <button mat-raised-button (click)="ajouterSavoiraCategorieSavoir()">Ajouter un sujet à cette Catégorie</button>
+    <button mat-raised-button class="primary" (click)="savoirsDeCategorieSavoir()"><mat-icon>description</mat-icon> Sujets contenus</button>
     <br>
   
     <br>
@@ -43,6 +43,6 @@
   
     <br>
     <br>
-    <button mat-raised-button class="buttonColorBlack" (click)="deleteCategorieSavoir()">Supprimer cette Categorie</button>
+    <button mat-raised-button class="buttonColorBlack" (click)="deleteCategorieSavoir()"><mat-icon>warning</mat-icon> Supprimer cette Categorie</button>
     <br>
   </div>

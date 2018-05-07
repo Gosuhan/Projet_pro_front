@@ -1,32 +1,5 @@
 <div>
-    <mat-card class="background" *ngIf= "memb.nom && details">
-        <div mat-card-avatar class="example-header-image">
-                <img mat-card-image src="{{memb.image}}" alt="Avatar">
-        </div>
-        <mat-card-header>
-            <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
-            <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{ memb.prenom }} alias {{ memb.pseudo }} est un {{ memb.fonction }} de Simplon.</p>
-            <p>Niveau général estimé : {{ memb.niveau_general }}</p>
-            <p>Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>
-            <p>Pseudo du Slack : {{memb.pseudo_slack}}</p>   
-            <p>{{ memb.admin ? " A titre d'information, cette personne est administrateur du site." : " A titre d'information, cette personne n'est pas administrateur du site."}}</p>
-            <p>{{ memb.pseudo }}{{ memb.disponibilite_actuelle ? " est actuellement disponible." : " n'est actuellement pas disponible." }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button (click)="cancelSelect()">Annuler</button>
-        </mat-card-actions>
-        </mat-card>
-        <br>
-        <br>
     <div>
-
-        <br>
-        <button mat-raised-button color="primary" (click)="details = !details">Détails <mat-icon>{{details ? "keyboard_arrow_up" : "keyboard_arrow_right"}}</mat-icon></button>
-        <br>
-        <br>
         <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
         </mat-form-field>
@@ -99,6 +72,35 @@
     </mat-table>
 
     <br>
+    <button mat-raised-button color="primary" (click)="details = !details"><mat-icon>art_track</mat-icon> Détails</button>
+    <br>
+    <br>
+    <br>
+
+    <mat-card class="background" *ngIf= "memb.nom && details">
+        <div mat-card-avatar class="example-header-image">
+                <img mat-card-image src="{{memb.image}}" alt="Avatar">
+        </div>
+        <mat-card-header>
+            <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
+            <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ memb.prenom }} alias {{ memb.pseudo }} est un {{ memb.fonction }} de Simplon.</p>
+            <p>Niveau général estimé : {{ memb.niveau_general }}</p>
+            <p>Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>
+            <p>Pseudo du Slack : {{memb.pseudo_slack}}</p>   
+            <p>{{ memb.admin ? " A titre d'information, cette personne est administrateur du site." : " A titre d'information, cette personne n'est pas administrateur du site."}}</p>
+            <p>{{ memb.pseudo }}{{ memb.disponibilite_actuelle ? " est actuellement disponible." : " n'est actuellement pas disponible." }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="cancelSelect()">Annuler</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <button mat-raised-button color="primary" (click)="objectif = !objectif">Objectifs <mat-icon>timeline</mat-icon></button>
+
+    <br>
     <br>
     <div *ngIf="memb.nom && objectif">
         <div>
@@ -123,11 +125,8 @@
     </div>
 
     <br>
-    <button mat-raised-button color="primary" (click)="objectif = !objectif">Objectifs <mat-icon>{{objectif ? "keyboard_arrow_up" : "keyboard_arrow_down"}}</mat-icon></button>
-
     <br>
-    <br>
-    <button mat-raised-button (click)="edit = !edit">{{edit? 'Informations à jour' : 'Mettre à jour les informations'}}</button>
+    <button mat-raised-button class="buttonColorBlack" (click)="edit = !edit">{{edit? 'Informations à jour' : 'Mettre à jour ses informations'}}</button>
     
     <br>
     <br>
@@ -197,13 +196,13 @@
 
     <br>
     <br>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!membreForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!membreForm.valid"><mat-icon>mode_edit</mat-icon> {{edition ? 'Modifier' : 'Ajouter'}}</button>
 </form>
 <br>
 <button mat-raised-button (click)="cancelSelect()">Annuler</button>
 
 <br>
 <br>
-<button mat-raised-button class="buttonColorBlack" (click)="deleteMembre()">Supprimer ce compte</button>
+<button mat-raised-button class="buttonColorBlack" (click)="deleteMembre()"><mat-icon>warning</mat-icon> Supprimer ce compte</button>
 <br>
 </div>

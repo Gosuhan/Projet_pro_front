@@ -35,12 +35,12 @@
 
   <br>
   <mat-form-field class="inputFullWidth">
-      <input matInput placeholder="Lien" required name="url" [(ngModel)]="ress.url">
+      <input matInput placeholder="Lien (URL)" required name="url" [(ngModel)]="ress.url">
   </mat-form-field>
 
   <br>
   <br>
-  <button mat-raised-button color="primary" type="submit" [disabled]="!ressourceForm.valid">{{edition ? 'Modifier' : 'Ajouter'}}</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!ressourceForm.valid"><mat-icon>mode_edit</mat-icon> {{edition ? 'Modifier' : 'Ajouter'}}</button>
 </form>
 
 <div *ngIf="edition">
@@ -49,6 +49,6 @@
 
 <br>
 <br>
-<button mat-raised-button class="buttonColorBlack" (click)="deleteRessource()">Supprimer cette ressource</button>
+<button mat-raised-button class="buttonColorBlack" (click)="deleteRessource()"><mat-icon>warning</mat-icon> Supprimer cette ressource</button>
 <br>
 </div>
