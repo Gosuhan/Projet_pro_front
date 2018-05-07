@@ -59,17 +59,29 @@
         </mat-form-field>
     </div>
     
-        <mat-table #table [dataSource]="dataSourceInscription" matSort>
-        
-            <!-- Id Column -->
-            <ng-container matColumnDef="id_inscription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Réf. </mat-header-cell>
-            <mat-cell *matCellDef="let inscription"> {{inscription.id_inscription}} </mat-cell>
+        <mat-table #table [dataSource]="this.memb.inscriptions" matSort>
+
+            <!-- Type inscription Column -->
+            <ng-container matColumnDef="type_inscription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Rôle </mat-header-cell>
+            <mat-cell *matCellDef="let inscription"> {{inscription.type_inscription === null ? '' : inscription.type_inscription.type_inscription}} </mat-cell>
             </ng-container>
+
+            <!-- Nom Savoir Column -->
+            <ng-container matColumnDef="nom_savoir">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Sujet </mat-header-cell>
+            <mat-cell *matCellDef="let inscription"> {{inscription.savoir === null ? '' : inscription.savoir.nom_savoir}} </mat-cell>
+            </ng-container>
+
+            <!-- Nom Savoir Column -->
+            <ng-container matColumnDef="niveau_savoir">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau </mat-header-cell>
+                    <mat-cell *matCellDef="let inscription"> {{inscription.niveau_savoir === null ? '' : inscription.niveau_savoir.niveau_savoir}} </mat-cell>
+                    </ng-container>
 
             <!-- Nom Column -->
             <ng-container matColumnDef="nom_inscription">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Définition de l'objectif </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Intitulé de mon objectif </mat-header-cell>
                     <mat-cell *matCellDef="let inscription"> {{inscription.nom_inscription}} </mat-cell>
                     </ng-container>
         
@@ -81,7 +93,7 @@
 
             <br>
             <mat-form-field class="inputFullWidth">
-                <input matInput placeholder="Nouvel objectif" required name="nom_inscription" [(ngModel)]="insc.nom_inscription">
+                <input matInput placeholder="Nouvel objectif (intitulé)" required name="nom_inscription" [(ngModel)]="insc.nom_inscription">
             </mat-form-field>
             
             <br>
@@ -90,14 +102,13 @@
         </form>
 
         <!-- <br>
-        <button mat-raised-button color="primary" (click)="addInscriptionAuMembre()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Importer mes inscriptions'}}</button>
-        <button mat-raised-button (click)="refreshTab()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Mise à jour'}}</button> -->
+        <button mat-raised-button color="primary" (click)="addInscriptionAuMembre()" [disabled]="!inscriptionForm.valid">{{edition ? '' : 'Importer mes inscriptions'}}</button> -->
 
         <br>
         <button *ngIf="!edition" mat-raised-button (click)="cancelSelectInsc()">Annuler</button>
 
         <br>
-        <button *ngIf="edition" mat-raised-button color="primary" (click)="addTypeInscriptionaInscription()" [disabled]="!inscriptionForm.valid"><mat-icon>supervisor_account</mat-icon> Type d'inscription</button>
+        <button *ngIf="edition" mat-raised-button color="primary" (click)="addTypeInscriptionaInscription()" [disabled]="!inscriptionForm.valid"><mat-icon>supervisor_account</mat-icon> Rôle</button>
         
         <br>
         <br>
@@ -107,7 +118,11 @@
         <br>
         <button *ngIf="edition" mat-raised-button color="primary" (click)="addNiveauSavoiraInscription()" [disabled]="!inscriptionForm.valid"><mat-icon>insert_chart</mat-icon> Niveau de connaissances</button>
 
-        <div *ngIf="edition">    
+        <div *ngIf="edition">
+            <br>
+            <button mat-raised-button (click)="refreshTab()" [disabled]="!inscriptionForm.valid"><mat-icon>autorenew</mat-icon> Mise à jour</button>
+            
+            <br>
             <br>
             <button mat-raised-button (click)="cancelSelectInsc()">Annuler</button>
 

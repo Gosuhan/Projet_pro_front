@@ -45,7 +45,7 @@ export class MembreComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  displayedColumns = ['id_inscription', 'nom_inscription'];
+  displayedColumns = ['type_inscription', 'nom_savoir', 'niveau_savoir', 'nom_inscription'];
   dataSourceInscription = new MatTableDataSource();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -79,17 +79,17 @@ export class MembreComponent implements OnInit {
       this.membreService
       .getMembre(this.id)
       .subscribe(
-        memb => (this.memb = memb),
+        memb => {
+          this.memb = memb;
+          this.insc = {
+            id_inscription: null,
+            nom_inscription: ''
+          };
+          this.refreshTab();
+          this.inscriptionService.update$.subscribe(() => this.refreshTab());
+        }
      );
     });
-
-    this.insc = {
-      id_inscription: null,
-      nom_inscription: ''
-    };
-    this.refreshTab();
-
-    this.inscriptionService.update$.subscribe(() => this.refreshTab());
   }
 
   editMembre() {
@@ -136,16 +136,15 @@ export class MembreComponent implements OnInit {
   }
 
   refreshTab() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      console.log( params.get('id'));
-      this.id = +this.route.snapshot.paramMap.get('id');
-    this.inscriptionService
-      .getInscriptionsMembre(this.id)
-      .subscribe((data: Iinscription[]) => {
-        this.dataSourceInscription = new MatTableDataSource(data);
-        this.dataSourceInscription.sort = this.sort;
-      });
-    });
+    this.membreService
+      .getMembre(this.id)
+      .subscribe(
+        memb => {
+          this.memb = memb;
+          this.dataSourceInscription = new MatTableDataSource(this.memb.inscriptions);
+          this.dataSourceInscription.sort = this.sort;
+        }
+     );
   }
 
   highlight(row) {
@@ -176,6 +175,7 @@ export class MembreComponent implements OnInit {
             this.insc.id_inscription = result.id_inscription;
             this.inscriptionService.addInscriptionMembre(this.memb, this.insc).subscribe(
               succes => {
+                console.log(succes);
                 this.refreshTab();
                 this.afficherMessage('Inscription enregistrée', ''); },
               error => {this.afficherMessage('', 'Erreur'); }
