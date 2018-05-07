@@ -126,7 +126,7 @@ export class SavoirListComponent implements OnInit {
 
   membresDeSavoir() {
     this.dialog.open(MembreDeSavoirComponent, {
-      width: '600px',
+      width: '1200px',
       data: this.sav.id_savoir
     });
   }

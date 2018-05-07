@@ -9,17 +9,17 @@
                 <!-- {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} *** Nécessite let membre of membres-->
           </div>
         </mat-tab>
-      <mat-tab label="niveau Débutant">
+      <mat-tab label="(niveau Débutant)">
         <div *ngFor="let membre of membresPasseursDebutants" class="textcenter">
           {{membre.nom}}
         </div>
       </mat-tab>
-      <mat-tab label="niveau Intermédiaire">
+      <mat-tab label="(niveau Intermédiaire)">
         <div *ngFor="let membre of membresPasseursIntermediaires" class="textcenter">
           {{membre.nom}}
         </div>
       </mat-tab>
-      <mat-tab label="niveau Confirmé">
+      <mat-tab label="(niveau Confirmé)">
         <div *ngFor="let membre of membresPasseursConfirmes" class="textcenter">
           {{membre.nom}}
         </div>
@@ -30,17 +30,17 @@
             <!-- {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} *** Nécessite let membre of membres-->
         </div> 
       </mat-tab>
-      <mat-tab label="niveau Débutant">
+      <mat-tab label="(niveau Débutant)">
         <div *ngFor="let membre of membresReceveursDebutants" class="textcenter">
             {{membre.nom}}
         </div> 
       </mat-tab>
-      <mat-tab label="niveau Intermédiaire">
+      <mat-tab label="(niveau Intermédiaire)">
         <div *ngFor="let membre of membresReceveursIntermediaires" class="textcenter">
             {{membre.nom}}
         </div> 
       </mat-tab>
-      <mat-tab label="niveau Confirmé">
+      <mat-tab label="(niveau Confirmé)">
         <div *ngFor="let membre of membresReceveursConfirmes" class="textcenter">
             {{membre.nom}}
         </div> 
