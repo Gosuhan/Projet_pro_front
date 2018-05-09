@@ -1,7 +1,7 @@
-<h2 mat-dialog-title *ngIf="test(); else ressourceVide">Liste des ressources liées à ce Savoir : {{savoir.nom_savoir}}</h2>
+<h2 mat-dialog-title *ngIf="test(); else ressourceVide">Liste des ressources liées à "{{savoir.nom_savoir}}"</h2>
 
 <ng-template #ressourceVide>
-    <h2 mat-dialog-title>Aucune ressource n'est liée à ce Savoir actuellement.</h2>
+    <h2 mat-dialog-title>Aucune ressource n'est liée à "{{savoir.nom_savoir}}" actuellement.</h2>
 </ng-template>
 
 <mat-dialog-content>
