@@ -23,3 +23,7 @@ img {
 .highlight {
     background: #E80041;
   }
+
+.cursor {
+cursor: pointer;
+}

@@ -9,7 +9,7 @@
       </mat-form-field>
     </div> -->
 
-    <mat-table class="filtreTableNiveauxSavoir" #table [dataSource]="dataSourceNiveauxSavoir" matSort>
+    <mat-table class="filtreTableNiveauxSavoir, cursor" #table [dataSource]="dataSourceNiveauxSavoir" matSort>
 
       <!-- Nom Column -->
       <ng-container matColumnDef="niveau_savoir">

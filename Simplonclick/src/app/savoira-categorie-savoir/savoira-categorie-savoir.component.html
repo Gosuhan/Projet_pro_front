@@ -16,7 +16,7 @@
       </mat-form-field>
     </div>
 
-    <mat-table class="filtreTableSavoirs" #table [dataSource]="dataSourceSavoirs" matSort>
+    <mat-table class="filtreTableSavoirs, cursor" #table [dataSource]="dataSourceSavoirs" matSort>
 
       <!-- Nom Column -->
       <ng-container matColumnDef="nom_savoir">

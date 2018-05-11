@@ -5,3 +5,7 @@
 .textcenter {
   text-align: center;
 }
+
+.cursor {
+  cursor: pointer;
+  }

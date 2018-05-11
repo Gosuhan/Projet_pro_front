@@ -16,7 +16,7 @@
       </mat-form-field>
     </div> -->
 
-    <mat-table class="filtreTableTypesInscription" #table [dataSource]="dataSourceTypesInscription" matSort>
+    <mat-table class="filtreTableTypesInscription, cursor" #table [dataSource]="dataSourceTypesInscription" matSort>
 
       <!-- Nom Column -->
       <ng-container matColumnDef="type_inscription">

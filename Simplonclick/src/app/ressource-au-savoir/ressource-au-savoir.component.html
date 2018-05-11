@@ -16,7 +16,7 @@
       </mat-form-field>
     </div>
 
-    <mat-table class="filtreTableRessources" #table [dataSource]="dataSourceRessources" matSort>
+    <mat-table class="filtreTableRessources, cursor" #table [dataSource]="dataSourceRessources" matSort>
 
       <!-- Nom Column -->
       <ng-container matColumnDef="nom_ressource">

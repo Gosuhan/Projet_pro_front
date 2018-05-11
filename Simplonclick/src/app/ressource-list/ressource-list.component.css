@@ -7,3 +7,7 @@
     background: black;
     color: white;
   }
+
+.cursor {
+  cursor: pointer;
+}
