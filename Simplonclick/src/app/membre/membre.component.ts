@@ -177,7 +177,8 @@ export class MembreComponent implements OnInit {
               succes => {
                 console.log(succes);
                 this.refreshTab();
-                this.afficherMessage('Inscription enregistrée', ''); },
+                // tslint:disable-next-line:max-line-length
+                this.afficherMessage('Nouvel objectif enregistré. Merci de mettre à jour les éléments à définir !', ''); },
               error => {this.afficherMessage('', 'Erreur'); }
             );
           });
