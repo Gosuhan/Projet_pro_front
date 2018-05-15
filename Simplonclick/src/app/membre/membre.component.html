@@ -64,19 +64,19 @@
             <!-- Type inscription Column -->
             <ng-container matColumnDef="type_inscription">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Mon rôle </mat-header-cell>
-            <mat-cell *matCellDef="let inscription"> {{inscription.type_inscription === null ? '' : inscription.type_inscription.type_inscription}} </mat-cell>
+            <mat-cell *matCellDef="let inscription"> {{inscription.type_inscription === null ? 'XXX' : inscription.type_inscription.type_inscription}} </mat-cell>
             </ng-container>
 
             <!-- Nom Savoir Column -->
             <ng-container matColumnDef="nom_savoir">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Sujet </mat-header-cell>
-            <mat-cell *matCellDef="let inscription"> {{inscription.savoir === null ? '' : inscription.savoir.nom_savoir}} </mat-cell>
+            <mat-cell *matCellDef="let inscription"> {{inscription.savoir === null ? 'XXX' : inscription.savoir.nom_savoir}} </mat-cell>
             </ng-container>
 
             <!-- Nom Savoir Column -->
             <ng-container matColumnDef="niveau_savoir">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau de connaissances </mat-header-cell>
-                    <mat-cell *matCellDef="let inscription"> {{inscription.niveau_savoir === null ? '' : inscription.niveau_savoir.niveau_savoir}} </mat-cell>
+                    <mat-cell *matCellDef="let inscription"> {{inscription.niveau_savoir === null ? 'XXX' : inscription.niveau_savoir.niveau_savoir}} </mat-cell>
                     </ng-container>
 
             <!-- Nom Column -->
