@@ -4,11 +4,11 @@ img {
     top: 5px;
 	width: 70px;
     height: auto;
-}
+  }
 
 .background {
     background-color: #e3e2d5;
-}
+  }
 
 .buttonColorBlack {
     background: black;
@@ -18,7 +18,7 @@ img {
 .textcenter {
     text-align: center;
     margin-top: 2rem;
-}
+  }
 
 .highlight {
     background: #E80041;
@@ -26,4 +26,21 @@ img {
 
 .cursor {
 cursor: pointer;
+  }
+
+@media(max-width: 600px) {
+    .mobile-label {
+      width: 80px;
+      display: inline-block;
+      font-weight: bold;
+      }
+    .mat-header-row {
+        display: none;
+      }
+    
+    .mat-row { 
+        flex-direction: column;
+        align-items: start;
+        padding: 8px 24px;
+      }
 }
