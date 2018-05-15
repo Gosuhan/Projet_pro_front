@@ -15,6 +15,10 @@ img {
     color: white;
   }
 
+.red {
+    color: red;
+}
+
 .textcenter {
     text-align: center;
     margin-top: 2rem;
