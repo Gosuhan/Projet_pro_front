@@ -2,7 +2,7 @@ img {
     position: absolute;
     left: 60px;
     top: 5px;
-	width: 70px;
+	  width: 70px;
     height: auto;
   }
 
@@ -47,4 +47,9 @@ cursor: pointer;
         align-items: start;
         padding: 8px 24px;
       }
+    
+    img {
+      left: 40px;
+      top: 0px;
+    }
 }
