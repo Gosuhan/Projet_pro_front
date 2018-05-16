@@ -97,7 +97,8 @@ export class MembreComponent implements OnInit {
       this.membreService
         .updateMembre(this.memb)
         .subscribe(
-          result => {this.afficherMessage('Modification enregistrée', ''); }
+          result => {this.afficherMessage('Modification enregistrée', ''); },
+          error =>  {this.afficherMessage('', 'Merci de rentrer une adresse mail valide'); }
         );
   }
 
