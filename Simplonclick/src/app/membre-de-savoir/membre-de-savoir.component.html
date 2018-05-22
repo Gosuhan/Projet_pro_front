@@ -5,44 +5,44 @@
     <mat-tab-group *ngIf="test(); else ressourceVide">
         <mat-tab label="Passeurs">
           <div *ngFor="let membre of membresPasseurs" class="textcenter">
-            {{membre.nom}}
+            <a href="http://localhost:4200/membres">{{membre.prenom}} {{membre.nom}}</a>
                 <!-- {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} *** Nécessite let membre of membres-->
           </div>
         </mat-tab>
       <mat-tab label="(niveau Débutant)">
         <div *ngFor="let membre of membresPasseursDebutants" class="textcenter">
-          {{membre.nom}}
+          <a href="http://localhost:4200/membres">{{membre.prenom}} {{membre.nom}}</a>
         </div>
       </mat-tab>
       <mat-tab label="(niveau Intermédiaire)">
         <div *ngFor="let membre of membresPasseursIntermediaires" class="textcenter">
-          {{membre.nom}}
+          <a href="http://localhost:4200/membres">{{membre.prenom}} {{membre.nom}}</a>
         </div>
       </mat-tab>
       <mat-tab label="(niveau Confirmé)">
         <div *ngFor="let membre of membresPasseursConfirmes" class="textcenter">
-          {{membre.nom}}
+          <a href="http://localhost:4200/membres">{{membre.prenom}} {{membre.nom}}</a>
         </div>
       </mat-tab>
       <mat-tab label="Receveurs">
         <div *ngFor="let membre of membresReceveurs" class="textcenter">
-            {{membre.nom}}
+          <a href="http://localhost:4200/membres">{{membre.prenom}} {{membre.nom}}</a>
             <!-- {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}} *** Nécessite let membre of membres-->
         </div> 
       </mat-tab>
       <mat-tab label="(niveau Débutant)">
         <div *ngFor="let membre of membresReceveursDebutants" class="textcenter">
-            {{membre.nom}}
+          <a href="http://localhost:4200/membres">{{membre.prenom}} {{membre.nom}}</a>
         </div> 
       </mat-tab>
       <mat-tab label="(niveau Intermédiaire)">
         <div *ngFor="let membre of membresReceveursIntermediaires" class="textcenter">
-            {{membre.nom}}
+          <a href="http://localhost:4200/membres">{{membre.prenom}} {{membre.nom}}</a>
         </div> 
       </mat-tab>
       <mat-tab label="(niveau Confirmé)">
         <div *ngFor="let membre of membresReceveursConfirmes" class="textcenter">
-            {{membre.nom}}
+          <a href="http://localhost:4200/membres">{{membre.prenom}} {{membre.nom}}</a>
         </div> 
       </mat-tab>
     </mat-tab-group>

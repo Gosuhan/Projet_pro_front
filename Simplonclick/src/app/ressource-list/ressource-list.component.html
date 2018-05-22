@@ -16,7 +16,7 @@
     <!-- URL Column -->
     <ng-container matColumnDef="url">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Lien </mat-header-cell>
-      <mat-cell *matCellDef="let ressource"> {{ressource.url}} </mat-cell>
+      <mat-cell *matCellDef="let ressource"><a href="{{ressource.url}}"> {{ressource.url}} </a></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -89,7 +89,7 @@
             <p>{{ memb.prenom }} alias {{ memb.pseudo }} est un {{ memb.fonction }} de Simplon.</p>
             <p>Niveau général estimé : {{ memb.niveau_general }}</p>
             <p>Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>
-            <p>Pseudo du Slack : {{memb.pseudo_slack}}</p>   
+            <p>Pseudo du Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></p>   
             <p>{{ memb.admin ? " A titre d'information, cette personne est administrateur du site." : " A titre d'information, cette personne n'est pas administrateur du site."}}</p>
             <p>{{ memb.pseudo }}{{ memb.disponibilite_actuelle ? " est actuellement disponible." : " n'est actuellement pas disponible." }}</p>
         </mat-card-content>

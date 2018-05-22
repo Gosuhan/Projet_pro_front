@@ -12,7 +12,7 @@
         <p>{{ memb.prenom }} (alias {{ memb.pseudo }}), à ce jour, tu es {{ memb.fonction }} à Simplon.</p>
         <p>Tu estimes ton niveau général comme étant : {{ memb.niveau_general }}</p>
         <p>Tes disponibilités habituelles sont : {{ memb.disponibilite_habituelle }}</p>
-        <p>Pseudo du Slack : {{memb.pseudo_slack}}</p>   
+        <p>Pseudo du Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></p>   
         <p>{{ memb.admin ? " A titre d'information, tu es administrateur du site." : " A titre d'information, tu n'es pas à ce jour administrateur du site."}}</p>
         <p>{{ memb.pseudo }}, {{ memb.disponibilite_actuelle ? " tu confirmes être actuellement disponible." : " tu confirmes n'être actuellement pas disponible." }}</p>
       </mat-card-content>
