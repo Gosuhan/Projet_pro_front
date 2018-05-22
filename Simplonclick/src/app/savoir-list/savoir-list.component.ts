@@ -75,13 +75,16 @@ export class SavoirListComponent implements OnInit {
     if (this.edition) {
       this.savoirService
         .updateSavoir(this.sav)
-        .subscribe();
+        .subscribe(
+          result => {this.afficherMessage('Enregistrement effectué', ''); },
+          error => {this.afficherMessage('', 'Veuillez modifier une information si nécessaire'); }
+        );
     } else {
       this.savoirService
         .addSavoir(this.sav)
         .subscribe(
           result => {this.afficherMessage('Enregistrement effectué', ''); },
-          error => {this.afficherMessage('', 'Savoir déjà présent'); }
+          error => {this.afficherMessage('', 'Sujet déjà présent'); }
         );
     }
   }
