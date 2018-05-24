@@ -115,7 +115,7 @@ export class SavoirListComponent implements OnInit {
 
   ajouterRessourceAuSavoir() {
     this.dialog.open(RessourceAuSavoirComponent, {
-      width: '600px',
+      width: '1200px',
       data: this.sav.id_savoir
     });
   }

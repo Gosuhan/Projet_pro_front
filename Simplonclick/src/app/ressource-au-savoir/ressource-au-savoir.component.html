@@ -20,14 +20,14 @@
 
       <!-- Nom Column -->
       <ng-container matColumnDef="nom_ressource">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
-        <mat-cell *matCellDef="let ressource"> {{ressource.nom_ressource}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ressource </mat-header-cell>
+        <mat-cell *matCellDef="let ressource" class="bold" [ngClass]="{'red' : ressource.savoir !== null}"> {{ressource.nom_ressource}} </mat-cell>
       </ng-container>
 
       <!-- URL Column -->
       <ng-container matColumnDef="url">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Lien </mat-header-cell>
-        <mat-cell *matCellDef="let ressource"> {{ressource.url}} </mat-cell>
+        <mat-cell *matCellDef="let ressource" [ngClass]="{'red' : ressource.savoir !== null}"> {{ressource.url}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -40,4 +40,9 @@
 <mat-dialog-actions>
   <button class="mat-raised-button mat-primary" [disabled]="!selectedRessource" (click)="addRessourceToSavoir()">Ajouter</button>
   <button class="mat-raised-button" (click)="closeDial()">Fermer</button>
+</mat-dialog-actions>
+
+<br>
+<mat-dialog-actions>
+  <mat-icon>warning</mat-icon><p class="red" ngClass="bold"> Ressource déjà liée à un sujet</p>
 </mat-dialog-actions>
