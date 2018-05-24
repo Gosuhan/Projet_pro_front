@@ -19,6 +19,14 @@ img {
     color: #E80041;
 }
 
+.green {
+    color: green;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .textcenter {
     text-align: center;
     margin-top: 2rem;

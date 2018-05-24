@@ -84,14 +84,14 @@
         <mat-card-header>
             <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
             <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
+            <mat-card-subtitle>Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <p>{{ memb.prenom }} alias {{ memb.pseudo }} est un {{ memb.fonction }} de Simplon.</p>
             <p>Niveau général estimé : {{ memb.niveau_general }}</p>
-            <p>Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>
-            <p>Pseudo du Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></p>   
+            <p class="bold">Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>   
             <p>{{ memb.admin ? " A titre d'information, cette personne est administrateur du site." : " A titre d'information, cette personne n'est pas administrateur du site."}}</p>
-            <p>{{ memb.pseudo }}{{ memb.disponibilite_actuelle ? " est actuellement disponible." : " n'est actuellement pas disponible." }}</p>
+            <p class ="red" [ngClass]="{'green': memb.disponibilite_actuelle === true}">{{ memb.disponibilite_actuelle ? "ACTUELLEMENT DISPONIBLE" : "ACTUELLEMENT PAS DISPONIBLE" }}</p>
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button (click)="cancelSelect()">Annuler</button>

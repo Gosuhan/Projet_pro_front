@@ -23,6 +23,18 @@
   color: white;
 }
 
+.red {
+  color: #E80041;
+}
+
+.green {
+  color: green;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 img {
   position: absolute;
   left: 60px;

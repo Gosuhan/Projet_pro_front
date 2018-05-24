@@ -6,15 +6,15 @@
       <mat-card-header>
           <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
           <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
+          <mat-card-subtitle>Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></mat-card-subtitle> 
       </mat-card-header>
       <mat-card-content>
         <h3>Bonjour {{ memb.prenom }}</h3>
         <p>{{ memb.prenom }} (alias {{ memb.pseudo }}), à ce jour, tu es {{ memb.fonction }} à Simplon.</p>
         <p>Tu estimes ton niveau général comme étant : {{ memb.niveau_general }}</p>
-        <p>Tes disponibilités habituelles sont : {{ memb.disponibilite_habituelle }}</p>
-        <p>Pseudo du Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></p>   
+        <p class="bold">Tes disponibilités habituelles sont : {{ memb.disponibilite_habituelle }}</p>
         <p>{{ memb.admin ? " A titre d'information, tu es administrateur du site." : " A titre d'information, tu n'es pas à ce jour administrateur du site."}}</p>
-        <p>{{ memb.pseudo }}, {{ memb.disponibilite_actuelle ? " tu confirmes être actuellement disponible." : " tu confirmes n'être actuellement pas disponible." }}</p>
+        <p class ="red" [ngClass]="{'green': memb.disponibilite_actuelle === true}">{{ memb.disponibilite_actuelle ? " ACTUELLEMENT DISPONIBLE" : "ACTUELLEMENT NON DISPONIBLE" }}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button (click)="edit = !edit"><mat-icon>mode_edit</mat-icon> {{edit? 'Informations à jour' : 'Mettre à jour mes informations'}}</button>
