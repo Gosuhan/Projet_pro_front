@@ -91,14 +91,14 @@ export class MembreListComponent implements OnInit {
         .updateMembre(this.memb)
         .subscribe(
           result => {this.afficherMessage('Enregistrement effectué', ''); },
-          error => {this.afficherMessage('', 'Membre déjà existant'); }
+          error => {this.afficherMessage('', 'Membre déjà existant / Adresse mail invalide'); }
         );
     } else {
       this.membreService
         .addMembre(this.memb)
         .subscribe(
           result => {this.afficherMessage('Enregistrement effectué', ''); },
-          error => {this.afficherMessage('', 'Membre déjà existant'); }
+          error => {this.afficherMessage('', 'Membre déjà existant / Adresse mail invalide'); }
         );
     }
   }
