@@ -9,7 +9,7 @@
     <mat-card>
       <mat-list-item>
         <div class="bold">{{ressource.nom_ressource}} - <a class="nobold" href="{{ressource.url}}">{{ressource.url}}</a></div>
-        <button class="mat-button" matTooltip="Ne plus lier cette ressource à ce savoir." matTooltipPosition="right" (click)="delRessourceSavoir(ressource.id_ressource, ressource.nom_ressource, ressource.url, ressource.savoir_id_savoir)"><mat-icon>link_off</mat-icon></button>
+        <button class="mat-button" matTooltip="Ne plus lier cette ressource à ce sujet." matTooltipPosition="right" (click)="delRessourceSavoir(ressource.id_ressource, ressource.nom_ressource, ressource.url, ressource.savoir_id_savoir)"><mat-icon>link_off</mat-icon></button>
       </mat-list-item>
     </mat-card>
   </mat-list>

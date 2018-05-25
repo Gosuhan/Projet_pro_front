@@ -71,60 +71,61 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_membre}" (click)="highlight(row)"></mat-row>
         </mat-table>
-    </mat-card>
-
-    <br>
-    <button mat-raised-button color="primary" (click)="details = !details"><mat-icon>art_track</mat-icon> Détails</button>
-    <br>
-    <br>
-    <br>
-
-    <mat-card class="background" *ngIf= "memb.nom && details">
-        <div mat-card-avatar class="example-header-image">
-                <img mat-card-image src="{{memb.image}}" alt="Avatar">
-        </div>
-        <mat-card-header>
-            <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
-            <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
-            <mat-card-subtitle>Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{ memb.prenom }} alias {{ memb.pseudo }} est un {{ memb.fonction }} de Simplon.</p>
-            <p>Niveau général estimé : {{ memb.niveau_general }}</p>
-            <p class="bold">Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>   
-            <p>{{ memb.admin ? " A titre d'information, cette personne est administrateur du site." : " A titre d'information, cette personne n'est pas administrateur du site."}}</p>
-            <p class ="red" [ngClass]="{'green': memb.disponibilite_actuelle === true}">{{ memb.disponibilite_actuelle ? "ACTUELLEMENT DISPONIBLE" : "ACTUELLEMENT PAS DISPONIBLE" }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button (click)="cancelSelect()">Annuler</button>
-        </mat-card-actions>
-    </mat-card>
     
-    <button mat-raised-button color="primary" (click)="objectif = !objectif" class="top">Objectifs <mat-icon>timeline</mat-icon></button>
 
-    <br>
-    <br>
-    <div *ngIf="memb.nom && objectif">
-        <div>
-            <mat-card>
-                <mat-card-content>
-                    <h2>Objectifs de {{memb.pseudo}}</h2>
-                    <mat-tab-group>
-                    <mat-tab label="Besoins">
-                        <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
-                                {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="Connaissances">
-                        <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
-                                {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
-                        </div> 
-                    </mat-tab>
-                    </mat-tab-group>
-                </mat-card-content>
-            </mat-card>
+        <br>
+        <button mat-raised-button color="primary" (click)="details = !details"><mat-icon>art_track</mat-icon> Détails</button>
+        <br>
+        <br>
+        <br>
+
+        <mat-card class="background" *ngIf= "memb.nom && details">
+            <div mat-card-avatar class="example-header-image">
+                    <img mat-card-image src="{{memb.image}}" alt="Avatar">
+            </div>
+            <mat-card-header>
+                <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
+                <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
+                <mat-card-subtitle>Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{ memb.prenom }} alias {{ memb.pseudo }} est un {{ memb.fonction }} de Simplon.</p>
+                <p>Niveau général estimé : {{ memb.niveau_general }}</p>
+                <p class="bold">Disponibilités habituelles : {{ memb.disponibilite_habituelle }}</p>   
+                <p>{{ memb.admin ? " A titre d'information, cette personne est administrateur du site." : " A titre d'information, cette personne n'est pas administrateur du site."}}</p>
+                <p class ="red" [ngClass]="{'green': memb.disponibilite_actuelle === true}">{{ memb.disponibilite_actuelle ? "ACTUELLEMENT DISPONIBLE" : "ACTUELLEMENT PAS DISPONIBLE" }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="cancelSelect()">Annuler</button>
+            </mat-card-actions>
+        </mat-card>
+        
+        <button mat-raised-button color="primary" (click)="objectif = !objectif" class="top">Objectifs <mat-icon>timeline</mat-icon></button>
+    
+        <br>
+        <br>
+        <div *ngIf="memb.nom && objectif">
+            <div>
+                <mat-card>
+                    <mat-card-content>
+                        <h2>Objectifs de {{memb.pseudo}}</h2>
+                        <mat-tab-group>
+                        <mat-tab label="Besoins">
+                            <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
+                                    {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Connaissances">
+                            <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
+                                    {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                            </div> 
+                        </mat-tab>
+                        </mat-tab-group>
+                    </mat-card-content>
+                </mat-card>
+            </div>
         </div>
-    </div>
+    </mat-card>
 
     <br>
     <br>
