@@ -52,7 +52,7 @@
 </div>
 <br>
 
-<div *ngIf="inscriptionBoolean">
+<mat-card *ngIf="inscriptionBoolean">
     <div>
         <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
@@ -132,10 +132,10 @@
             <br>
             <br>
         </div>
-    </div>
+    </mat-card>
 <br>
 
-<div *ngIf="edit">
+<mat-card class="width" *ngIf="edit">
   <!-- <mat-slide-toggle name="admin" [(ngModel)]="memb.admin">{{memb.admin ? 'Administrateur' : 'N\'est pas Administrateur'}}</mat-slide-toggle>
 
   <br>
@@ -203,4 +203,4 @@
   <br>
   <button mat-raised-button class="buttonColorBlack" (click)="deleteMembre()"><mat-icon>warning</mat-icon> Supprimer mon compte</button>
   <br>
-</div>
+</mat-card>

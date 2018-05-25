@@ -6,6 +6,16 @@ img {
     height: auto;
   }
 
+.width {
+  width: 25%;
+}
+
+@media (max-width: 600px) {
+  .width {
+    width: auto;
+  }
+}
+
 .background {
     background-color: #e3e2d5;
   }

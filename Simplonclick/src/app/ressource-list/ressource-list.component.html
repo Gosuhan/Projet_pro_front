@@ -1,4 +1,4 @@
-<div>
+<mat-card>
   <div>
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
@@ -22,7 +22,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_ressource}" (click)="highlight(row)"></mat-row>
   </mat-table>
-</div>
+</mat-card>
 
   <br>
   <br>

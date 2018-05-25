@@ -23,6 +23,20 @@
   color: white;
 }
 
+.top {
+  top: 3px;
+}
+
+.width {
+  width: 25%;
+}
+
+@media (max-width: 600px) {
+  .width {
+    width: auto;
+  }
+}
+
 .red {
   color: #E80041;
 }

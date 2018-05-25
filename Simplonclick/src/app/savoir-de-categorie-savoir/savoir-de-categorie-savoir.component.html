@@ -1,18 +1,20 @@
 <h2 mat-dialog-title *ngIf="test(); else savoirVide">Liste des savoirs liés à cette catégorie : {{categorieSavoir.nom_categorie_savoir}}</h2>
 
-<ng-template #savoirVide>
-    <h2 mat-dialog-title>Aucun savoir n'est lié à cette catégorie actuellement.</h2>
-</ng-template>
+<mat-card>
+  <ng-template #savoirVide>
+      <h2 mat-dialog-title>Aucun savoir n'est lié à cette catégorie actuellement.</h2>
+  </ng-template>
 
-<mat-dialog-content>
-  <mat-list *ngFor="let savoir of savoirs">
-    <mat-list-item>
-      <div>{{savoir.nom_savoir}}</div>
-      <button class="mat-button" matTooltip="Ne plus lier ce savoir à cette catégorie." matTooltipPosition="right" (click)="delSavoirCategorieSavoir(savoir.id_savoir, savoir.nom_savoir, savoir.categorie_savoir_id_categorie_savoir)"><mat-icon>delete_forever</mat-icon></button>
-    </mat-list-item>
-  </mat-list>
+  <mat-dialog-content>
+    <mat-list *ngFor="let savoir of savoirs">
+      <mat-list-item>
+        <div>{{savoir.nom_savoir}}</div>
+        <button class="mat-button" matTooltip="Ne plus lier ce savoir à cette catégorie." matTooltipPosition="right" (click)="delSavoirCategorieSavoir(savoir.id_savoir, savoir.nom_savoir, savoir.categorie_savoir_id_categorie_savoir)"><mat-icon>delete_forever</mat-icon></button>
+      </mat-list-item>
+    </mat-list>
 
-</mat-dialog-content>
+  </mat-dialog-content>
+</mat-card>
 
 
 <mat-dialog-actions>
