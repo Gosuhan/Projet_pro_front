@@ -1,41 +1,44 @@
+
 <h2 mat-dialog-title>Sélectionnez la ressource concernée</h2>
 
-<mat-dialog-content>
+<mat-card>
+  <mat-dialog-content>
 
-  <!-- <div>
-    <mat-form-field>
-      <input matInput type="text" placeholder="Recherche" name="recherche" #recherche>
-    </mat-form-field>
-    <button mat-raised-button (click)="rechercher(recherche.value)"><mat-icon>search</mat-icon></button>
-  </div> -->
-
-  <div *ngIf="dataSourceRessources.data.length>0">
-    <div class="filtreTableRessources">
+    <!-- <div>
       <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+        <input matInput type="text" placeholder="Recherche" name="recherche" #recherche>
       </mat-form-field>
+      <button mat-raised-button (click)="rechercher(recherche.value)"><mat-icon>search</mat-icon></button>
+    </div> -->
+
+    <div *ngIf="dataSourceRessources.data.length>0">
+      <div class="filtreTableRessources">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+        </mat-form-field>
+      </div>
+
+      <mat-table class="filtreTableRessources, cursor" #table [dataSource]="dataSourceRessources" matSort>
+
+        <!-- Nom Column -->
+        <ng-container matColumnDef="nom_ressource">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Ressource </mat-header-cell>
+          <mat-cell *matCellDef="let ressource" class="bold" [ngClass]="{'red' : ressource.savoir !== null}"> {{ressource.nom_ressource}} </mat-cell>
+        </ng-container>
+
+        <!-- URL Column -->
+        <ng-container matColumnDef="url">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Lien </mat-header-cell>
+          <mat-cell *matCellDef="let ressource" [ngClass]="{'red' : ressource.savoir !== null}"> {{ressource.url}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_ressource}" (click)="highlight(row)"></mat-row>
+      </mat-table>
     </div>
 
-    <mat-table class="filtreTableRessources, cursor" #table [dataSource]="dataSourceRessources" matSort>
-
-      <!-- Nom Column -->
-      <ng-container matColumnDef="nom_ressource">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Ressource </mat-header-cell>
-        <mat-cell *matCellDef="let ressource" class="bold" [ngClass]="{'red' : ressource.savoir !== null}"> {{ressource.nom_ressource}} </mat-cell>
-      </ng-container>
-
-      <!-- URL Column -->
-      <ng-container matColumnDef="url">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Lien </mat-header-cell>
-        <mat-cell *matCellDef="let ressource" [ngClass]="{'red' : ressource.savoir !== null}"> {{ressource.url}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_ressource}" (click)="highlight(row)"></mat-row>
-    </mat-table>
-  </div>
-
-</mat-dialog-content>
+  </mat-dialog-content>
+</mat-card>
 
 <mat-dialog-actions>
   <button class="mat-raised-button mat-primary" [disabled]="!selectedRessource" (click)="addRessourceToSavoir()">Ajouter</button>

@@ -6,14 +6,15 @@
 
 <mat-dialog-content>
   <mat-list *ngFor="let ressource of ressources">
-    <mat-list-item>
-      <div>{{ressource.nom_ressource}} <a href="{{ressource.url}}">{{ressource.url}}</a></div>
-      <button class="mat-button" matTooltip="Ne plus lier cette ressource à ce savoir." matTooltipPosition="right" (click)="delRessourceSavoir(ressource.id_ressource, ressource.nom_ressource, ressource.url, ressource.savoir_id_savoir)"><mat-icon>delete_forever</mat-icon></button>
-    </mat-list-item>
+    <mat-card>
+      <mat-list-item>
+        <div class="bold">{{ressource.nom_ressource}} - <a class="nobold" href="{{ressource.url}}">{{ressource.url}}</a></div>
+        <button class="mat-button" matTooltip="Ne plus lier cette ressource à ce savoir." matTooltipPosition="right" (click)="delRessourceSavoir(ressource.id_ressource, ressource.nom_ressource, ressource.url, ressource.savoir_id_savoir)"><mat-icon>link_off</mat-icon></button>
+      </mat-list-item>
+    </mat-card>
   </mat-list>
 
 </mat-dialog-content>
-
 
 <mat-dialog-actions>
   <button class="mat-raised-button" (click)="closeDial()">Fermer</button>
