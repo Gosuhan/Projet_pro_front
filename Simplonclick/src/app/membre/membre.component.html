@@ -53,12 +53,13 @@
 <br>
 
 <mat-card *ngIf="inscriptionBoolean">
-    <div>
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
-        </mat-form-field>
-    </div>
-    
+    <mat-card class="backgroundSmoke">
+        <div>
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+            </mat-form-field>
+        </div>
+        
         <mat-table class="mobile-label, cursor" #table [dataSource]="dataSourceInscription" matSort>
 
             <!-- Type inscription Column -->
@@ -88,6 +89,7 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.id_inscription}" (click)="highlight(row)"></mat-row>
         </mat-table>
+    </mat-card>
 
         <form #inscriptionForm="ngForm" (ngSubmit)="onSubmit(inscriptionForm)">
 

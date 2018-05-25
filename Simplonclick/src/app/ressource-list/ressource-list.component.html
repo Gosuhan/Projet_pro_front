@@ -10,7 +10,7 @@
     <!-- Nom Column -->
     <ng-container matColumnDef="nom_ressource">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
-      <mat-cell *matCellDef="let ressource"> {{ressource.nom_ressource}} </mat-cell>
+      <mat-cell *matCellDef="let ressource" class="bold"> {{ressource.nom_ressource}} </mat-cell>
     </ng-container>
 
     <!-- URL Column -->
@@ -40,7 +40,7 @@
 
   <br>
   <br>
-  <button mat-raised-button color="primary" type="submit" [disabled]="!ressourceForm.valid"><mat-icon>mode_edit</mat-icon> {{edition ? 'Modifier' : 'Ajouter'}}</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!ressourceForm.valid"><mat-icon>{{edition ? "mode_edit" : "fiber_new"}}</mat-icon> {{edition ? 'Modifier' : 'Ajouter'}}</button>
 </form>
 
 <div *ngIf="edition">

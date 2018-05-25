@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card>
+  <mat-card class="backgroundSmoke">
     <div>
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
@@ -39,7 +39,7 @@
 
     <br>
     <br>
-    <button mat-raised-button type="submit" [disabled]="!savoirForm.valid"><mat-icon>mode_edit</mat-icon> {{edition ? 'Modifier' : 'Ajouter'}}</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!savoirForm.valid"><mat-icon>{{edition ? "mode_edit" : "fiber_new"}}</mat-icon> {{edition ? 'Modifier' : 'Ajouter'}}</button>
   </form>
 
   <div *ngIf="edition">
