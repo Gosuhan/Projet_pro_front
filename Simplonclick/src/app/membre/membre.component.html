@@ -1,18 +1,18 @@
 <div>
   <mat-card class="background">
-      <div mat-card-avatar class="example-header-image">
+      <div mat-card-avatar class="example-header-image" *ngIf="memb.image">
               <img mat-card-image src="{{memb.image}}" alt="Avatar">
       </div>
       <mat-card-header>
           <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
-          <mat-card-subtitle>{{ memb.email }}</mat-card-subtitle>
-          <mat-card-subtitle>Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></mat-card-subtitle> 
+          <mat-card-subtitle *ngIf="memb.email">{{ memb.email }}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="memb.pseudo_slack">Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></mat-card-subtitle> 
       </mat-card-header>
       <mat-card-content>
         <h3>Bonjour {{ memb.prenom }}</h3>
-        <p>{{ memb.prenom }} (alias {{ memb.pseudo }}), à ce jour, tu es {{ memb.fonction }} à Simplon.</p>
-        <p>Tu estimes ton niveau général comme étant : {{ memb.niveau_general }}</p>
-        <p class="bold">Tes disponibilités habituelles sont : {{ memb.disponibilite_habituelle }}</p>
+        <p>{{ memb.prenom }} (alias {{ memb.pseudo ? memb.pseudo : "Inconnu" }}), à ce jour, tu es {{ memb.fonction ? memb.fonction : "présent" }} à Simplon.</p>
+        <p>Tu estimes ton niveau général comme étant : {{ memb.niveau_general ? memb.niveau_general : "A définir" }}</p>
+        <p class="bold">Tes disponibilités habituelles sont : {{ memb.disponibilite_habituelle ? memb.disponibilite_habituelle : "A définir" }}</p>
         <p>{{ memb.admin ? " A titre d'information, tu es administrateur du site." : " A titre d'information, tu n'es pas à ce jour administrateur du site."}}</p>
         <p class ="red" [ngClass]="{'green': memb.disponibilite_actuelle === true}">{{ memb.disponibilite_actuelle ? " ACTUELLEMENT DISPONIBLE" : "ACTUELLEMENT NON DISPONIBLE" }}</p>
       </mat-card-content>
