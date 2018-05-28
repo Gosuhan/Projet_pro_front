@@ -6,7 +6,7 @@
       <mat-card-header>
           <mat-card-title>{{ memb.nom }} {{ memb.prenom }}</mat-card-title>
           <mat-card-subtitle *ngIf="memb.email">{{ memb.email }}</mat-card-subtitle>
-          <mat-card-subtitle *ngIf="memb.pseudo_slack">Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack}}</a></mat-card-subtitle> 
+          <mat-card-subtitle>Slack : <a href="https://simplon-co.slack.com/messages/C7BTFRZTL/team/U7BU86249">{{memb.pseudo_slack ? memb.pseudo_slack : "A définir"}}</a></mat-card-subtitle> 
       </mat-card-header>
       <mat-card-content>
         <h3>Bonjour {{ memb.prenom }}</h3>
