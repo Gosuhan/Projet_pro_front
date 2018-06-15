@@ -114,12 +114,12 @@
                         <mat-tab-group>
                         <mat-tab label="Besoins">
                             <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
-                                    {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                                    {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
                             </div>
                         </mat-tab>
                         <mat-tab label="Connaissances">
                             <div *ngFor="let inscription of memb.inscriptions" class="textcenter">
-                                    {{inscription.type_inscription.type_inscription === "Receveur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
+                                    {{inscription.type_inscription.type_inscription === "Passeur" ? inscription.savoir.nom_savoir + " (niveau " + inscription.niveau_savoir.niveau_savoir + ")" : ""}}
                             </div> 
                         </mat-tab>
                         </mat-tab-group>
